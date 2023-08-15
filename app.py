@@ -10,15 +10,15 @@ sdxl_loras = [
         ("pixel-art-xl.jpeg", "Pixel Art XL", "nerijs/pixel-art-xl", "pixel art", "pixel-art-xl.safetensors", True),
         ("papercut_SDXL.jpeg", "Papercut SDXL", "TheLastBen/Papercut_SDXL", "papercut", "papercut.safetensors", False),
         ("lego-minifig-xl.jpeg", "Lego Minifig XL", "nerijs/lego-minifig-xl", "lego minifig", "legominifig-v1.0-000003.safetensors", True),
+        ("embroid.png","Embroidery Style","ostris/embroidery_style_lora_sdxl","","embroidered_style_v1_sdxl.safetensors",False),    
         ("3d_style_4.jpeg", "3D Render Style", "goofyai/3d_render_style_xl", "3d style", "3d_render_style_xl.safetensors", True),
         ("LogoRedmond-LogoLoraForSDXL.jpeg","Logo.Redmond", "artificialguybr/LogoRedmond-LogoLoraForSDXL", "LogoRedAF", "LogoRedmond_LogoRedAF.safetensors", False),
         ("LineAni.Redmond.png", "LinearManga.Redmond", "artificialguybr/LineAniRedmond-LinearMangaSDXL", "LineAniAF", "LineAniRedmond-LineAniAF.safetensors", True),
-        ("embroid.png","Embroidery Style","ostris/embroidery_style_lora_sdxl","","embroidered_style_v1_sdxl.safetensors",False),
         ("watercolor.png","Watercolor Style","ostris/watercolor_style_lora_sdxl","","watercolor_v1_sdxl.safetensors",False),
-        ("crayon.png","Crayon Style","ostris/crayon_style_lora_sdxl","","crayons_v1_sdxl.safetensors",False),
         ("dog.png", "Cyborg Style", "goofyai/cyborg_style_xl", "cyborg style", "cyborg_style_xl-off.safetensors", True),
         ("ToyRedmond-ToyLoraForSDXL10.png","Toy.Redmond", "artificialguybr/ToyRedmond-ToyLoraForSDXL10", "FnkRedmAF", "ToyRedmond-FnkRedmAF.safetensors", True),   
         ("voxel-xl-lora.png", "Voxel XL", "Fictiverse/Voxel_XL_Lora", "voxel style", "VoxelXL_v1.safetensors", True),
+        ("crayon.png","Crayon Style","ostris/crayon_style_lora_sdxl","","crayons_v1_sdxl.safetensors",False),
         ("pikachu.webp", "Pikachu XL", "TheLastBen/Pikachu_SDXL", "pikachu", "pikachu.safetensors", False),
         ("william_eggleston.webp", "William Eggleston Style", "TheLastBen/William_Eggleston_Style_SDXL", "by william eggleston", "wegg.safetensors", False),
         ("josef_koudelka.webp", "Josef Koudelka Style", "TheLastBen/Josef_Koudelka_Style_SDXL", "by josef koudelka", "koud.safetensors", False),
@@ -40,6 +40,7 @@ mutable_pipe = StableDiffusionXLPipeline.from_pretrained(
     torch_dtype=torch.float16,
 ).to("cpu")
 original_pipe = copy.deepcopy(mutable_pipe)
+mutable_pipe.to("cuda")
 
 last_lora = ""
 last_merged = False
@@ -56,6 +57,7 @@ def run_lora(prompt, negative, weight, selected_state):
     if(last_lora != repo_name):
         if(last_merged):
             pipe = copy.deepcopy(original_pipe)
+            pipe.to("cuda")
         else:
             pipe.unload_lora_weights()
         is_compatible = sdxl_loras[selected_state.index][5]
@@ -75,7 +77,7 @@ def run_lora(prompt, negative, weight, selected_state):
                 )
                 lora_model.merge_to(pipe.text_encoder, pipe.unet, weights_sd, torch.float16, "cuda")
             last_merged = True
-    pipe.to("cuda")
+    
     image = pipe(
     prompt=prompt, negative_prompt=negative, num_inference_steps=20, guidance_scale=7.5, cross_attention_kwargs=cross_attention_kwargs).images[0]
     last_lora = repo_name
