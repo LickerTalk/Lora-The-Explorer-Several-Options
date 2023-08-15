@@ -123,7 +123,7 @@ with gr.Blocks(css=css) as demo:
                         gr.Markdown("")
     selected_state = gr.State()
     gallery.select(update_selection, outputs=[prompt_title, prompt, selected_state], queue=False, show_progress=False)
-    promot.submit(fn=run_lora, inputs=[prompt, negative, weight, selected_state], outputs=result)
+    prompt.submit(fn=run_lora, inputs=[prompt, negative, weight, selected_state], outputs=result)
     button.click(fn=run_lora, inputs=[prompt, negative, weight, selected_state], outputs=result)
     
     
