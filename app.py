@@ -97,7 +97,7 @@ with gr.Blocks(css=css) as demo:
     title = gr.Markdown("# LoRA the Explorer 🔎", elem_id="title")
     with gr.Row():
         gallery = gr.Gallery(value=[(a, b) for a, b, _, _, _, _ in sdxl_loras],
-                             label="LoRA Gallery",
+                             label="SDXL LoRA Gallery",
                              allow_preview=False,
                              columns=3, 
                              elem_id="gallery"
