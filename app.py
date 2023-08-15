@@ -28,7 +28,6 @@ sdxl_loras = [
 saved_names = [hf_hub_download(repo_id, filename) for _, _, repo_id, _, filename, _ in sdxl_loras]
     
 def update_selection(selected_state: gr.SelectData):
-    sleep(60)
     lora_repo = sdxl_loras[selected_state.index][2]
     instance_prompt = sdxl_loras[selected_state.index][3]
     updated_text = f"### Selected: [{lora_repo}](https://huggingface.co/{lora_repo})"
@@ -41,7 +40,6 @@ mutable_pipe = StableDiffusionXLPipeline.from_pretrained(
     torch_dtype=torch.float16,
 ).to("cpu")
 original_pipe = copy.deepcopy(mutable_pipe)
-mutable_pipe.to("cuda")
 
 last_lora = ""
 last_merged = False
@@ -58,7 +56,6 @@ def run_lora(prompt, negative, weight, selected_state):
     if(last_lora != repo_name):
         if(last_merged):
             pipe = copy.deepcopy(original_pipe)
-            pipe.to("cuda")
         else:
             pipe.unload_lora_weights()
         is_compatible = sdxl_loras[selected_state.index][5]
@@ -78,6 +75,7 @@ def run_lora(prompt, negative, weight, selected_state):
                 )
                 lora_model.merge_to(pipe.text_encoder, pipe.unet, weights_sd, torch.float16, "cuda")
             last_merged = True
+    pipe.to("cuda")
     image = pipe(
     prompt=prompt, negative_prompt=negative, num_inference_steps=20, guidance_scale=7.5, cross_attention_kwargs=cross_attention_kwargs).images[0]
     last_lora = repo_name
