@@ -39,7 +39,7 @@ pipe = StableDiffusionXLPipeline.from_pretrained(
     vae=vae,
     torch_dtype=torch.float16,
 ).to("cpu")
-original_pipe = copy.deepcopy(mutable_pipe)
+original_pipe = copy.deepcopy(pipe)
 pipe.to("cuda")
 
 last_lora = ""
