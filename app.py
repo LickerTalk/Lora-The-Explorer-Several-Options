@@ -34,20 +34,19 @@ def update_selection(selected_state: gr.SelectData):
     return updated_text, instance_prompt, selected_state
 
 vae = AutoencoderKL.from_pretrained("madebyollin/sdxl-vae-fp16-fix", torch_dtype=torch.float16)
-mutable_pipe = StableDiffusionXLPipeline.from_pretrained(
+pipe = StableDiffusionXLPipeline.from_pretrained(
     "stabilityai/stable-diffusion-xl-base-1.0",
     vae=vae,
     torch_dtype=torch.float16,
 ).to("cpu")
 original_pipe = copy.deepcopy(mutable_pipe)
-mutable_pipe.to("cuda")
+pipe.to("cuda")
 
 last_lora = ""
 last_merged = False
 
 def run_lora(prompt, negative, weight, selected_state):
-    global last_lora, last_merged
-    pipe = mutable_pipe
+    global last_lora, last_merged, pipe
     if(not selected_state):
         raise gr.Error("You must select a LoRA")
     repo_name = sdxl_loras[selected_state.index][2]
