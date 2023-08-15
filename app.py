@@ -12,7 +12,7 @@ sdxl_loras = [
         ("lego-minifig-xl.jpeg", "Lego Minifig XL", "nerijs/lego-minifig-xl", "lego minifig", "legominifig-v1.0-000003.safetensors", True),
         ("embroid.png","Embroidery Style","ostris/embroidery_style_lora_sdxl","","embroidered_style_v1_sdxl.safetensors",False),    
         ("3d_style_4.jpeg", "3D Render Style", "goofyai/3d_render_style_xl", "3d style", "3d_render_style_xl.safetensors", True),
-        ("LogoRedmond-LogoLoraForSDXL.jpeg","Logo.Redmond", "artificialguybr/LogoRedmond-LogoLoraForSDXL", "LogoRedAF", "LogoRedmond_LogoRedAF.safetensors", False),
+        ("LogoRedmond-LogoLoraForSDXL.jpeg","Logo.Redmond", "artificialguybr/LogoRedmond-LogoLoraForSDXL", "LogoRedAF", "LogoRedmond_LogoRedAF.safetensors", True),
         ("LineAni.Redmond.png", "LinearManga.Redmond", "artificialguybr/LineAniRedmond-LinearMangaSDXL", "LineAniAF", "LineAniRedmond-LineAniAF.safetensors", True),
         ("watercolor.png","Watercolor Style","ostris/watercolor_style_lora_sdxl","","watercolor_v1_sdxl.safetensors",False),
         ("dog.png", "Cyborg Style", "goofyai/cyborg_style_xl", "cyborg style", "cyborg_style_xl-off.safetensors", True),
