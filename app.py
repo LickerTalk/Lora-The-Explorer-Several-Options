@@ -84,7 +84,8 @@ def run_lora(prompt, negative, weight, selected_state):
     return image
     
 css = '''
-#title{font-size: 250%; text-align: center}
+#title{text-align: center;margin-bottom: 0.5em}
+#title h1{font-size: 3em}
 #prompt textarea{width: calc(100% - 160px);border-top-right-radius: 0px;border-bottom-right-radius: 0px;}
 #run_button{position:absolute;margin-top: 38px;right: 0;margin-right: 0.8em;border-bottom-left-radius: 0px;
     border-top-left-radius: 0px;}
@@ -93,7 +94,7 @@ css = '''
 '''
 
 with gr.Blocks(css=css) as demo:
-    title = gr.Markdown("# Lora The Explorer XL", elem_id="title")
+    title = gr.Markdown("# LoRA the Explorer 🔎", elem_id="title")
     with gr.Row():
         gallery = gr.Gallery(value=[(a, b) for a, b, _, _, _, _ in sdxl_loras],
                              label="LoRA Gallery",
