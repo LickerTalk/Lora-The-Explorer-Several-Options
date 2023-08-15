@@ -1,6 +1,6 @@
 ---
-title: TryYourLORA
-emoji: 📚
+title: LoRA The Explorer
+emoji: 🔎🖼️
 colorFrom: indigo
 colorTo: blue
 sdk: gradio
