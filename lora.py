@@ -220,7 +220,8 @@ class LoRAInfModule(LoRAModule):
     def default_forward(self, x):
         # print("default_forward", self.lora_name, x.size())
         org_forward = self.org_forward(x)
-        lora_up_down = self.lora_up(self.lora_down(x))
+        lora_down = self.lora_down(x)
+        lora_up_down = self.lora_up(lora_down)
         print(org_forward)
         print(lora_up_down)
         print(self.multiplier)
