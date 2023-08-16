@@ -219,7 +219,7 @@ class LoRAInfModule(LoRAModule):
 
     def default_forward(self, x):
         # print("default_forward", self.lora_name, x.size())
-        return self.org_forward(x) + self.lora_up(self.lora_down(x)) * self.multiplier * self.scale
+        return self.org_forward(x) + self.lora_up(self.lora_down(x)) * self.multiplier #* self.scale
 
     def forward(self, x):
         if not self.enabled:
