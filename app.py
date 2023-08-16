@@ -59,7 +59,6 @@ def run_lora(prompt, negative, weight, selected_state):
     if last_lora != repo_name:
         if last_merged:
             pipe = copy.deepcopy(original_pipe)
-            pipe.to(device)
         else:
             pipe.unload_lora_weights()
         is_compatible = sdxl_loras[selected_state.index][5]
@@ -83,12 +82,7 @@ def run_lora(prompt, negative, weight, selected_state):
                     pipe.unet,
                     for_inference=True,
                 )
-                #lora_model.to(device)
                 lora_model.apply_to(pipe.text_encoder, pipe.unet) #is apply too all you need?
-                #lora_model.to(device)
-                #lora_model.merge_to(
-                #    pipe.text_encoder, pipe.unet, weights_sd, torch.float16, "cuda"
-                #)
                 pipe.to(device)
             last_merged = True
 
