@@ -59,6 +59,7 @@ def run_lora(prompt, negative, weight, selected_state):
     if last_lora != repo_name:
         if last_merged:
             pipe = copy.deepcopy(original_pipe)
+            pipe.to(device)
         else:
             pipe.unload_lora_weights()
         is_compatible = sdxl_loras[selected_state.index][5]
