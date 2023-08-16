@@ -73,7 +73,7 @@ def run_lora(prompt, negative, weight, selected_state):
                     multiplier = float(weight)
                 else:
                     multiplier = 1.0
-                pipe.to("cpu")
+                    
                 multiplier = torch.tensor([multiplier], dtype=torch.float16, device=device)
                 lora_model, weights_sd = lora.create_network_from_weights(
                     multiplier,
