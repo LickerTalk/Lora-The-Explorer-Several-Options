@@ -83,8 +83,10 @@ def run_lora(prompt, negative, weight, selected_state):
                     pipe.unet,
                     for_inference=True,
                 )
-                lora_model = lora_model.to("cuda")
+                lora_model = lora_model.to("cuda").to(dtype=torch.float16)
                 lora_model.apply_to(pipe.text_encoder, pipe.unet) #is apply too all you need?
+                lora_model = lora_model.to("cuda").to(dtype=torch.float16)
+                
             last_merged = True
 
     image = pipe(
