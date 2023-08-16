@@ -1,0 +1,130 @@
+[
+    {
+        "image": "images/pixel-art-xl.jpeg",
+        "title": "Pixel Art XL",
+        "repo": "nerijs/pixel-art-xl",
+        "trigger_word": "pixel art",
+        "weights": "pixel-art-xl.safetensors",
+        "is_compatible": true
+    },
+    {
+        "image": "images/papercut_SDXL.jpeg",
+        "title": "Papercut SDXL",
+        "repo": "TheLastBen/Papercut_SDXL",
+        "trigger_word": "papercut",
+        "weights": "papercut.safetensors",
+        "is_compatible": false
+    },
+    {
+        "image": "images/lego-minifig-xl.jpeg",
+        "title": "Lego Minifig XL",
+        "repo": "nerijs/lego-minifig-xl",
+        "trigger_word": "lego minifig",
+        "weights": "legominifig-v1.0-000003.safetensors",
+        "is_compatible": true
+    },
+    {
+        "image": "images/embroid.png",
+        "title": "Embroidery Style",
+        "repo": "ostris/embroidery_style_lora_sdxl",
+        "trigger_word": "",
+        "weights": "embroidered_style_v1_sdxl.safetensors",
+        "is_compatible": false
+    },
+    {
+        "image": "images/3d_style_4.jpeg",
+        "title": "3D Render Style",
+        "repo": "goofyai/3d_render_style_xl",
+        "trigger_word": "3d style",
+        "weights": "3d_render_style_xl.safetensors",
+        "is_compatible": true
+    },
+    {
+        "image": "images/LogoRedmond-LogoLoraForSDXL.jpeg",
+        "title": "Logo.Redmond",
+        "repo": "artificialguybr/LogoRedmond-LogoLoraForSDXL",
+        "trigger_word": "LogoRedAF",
+        "weights": "LogoRedmond_LogoRedAF.safetensors",
+        "is_compatible": true
+    },
+    {
+        "image": "images/LineAni.Redmond.png",
+        "title": "LinearManga.Redmond",
+        "repo": "artificialguybr/LineAniRedmond-LinearMangaSDXL",
+        "trigger_word": "LineAniAF",
+        "weights": "LineAniRedmond-LineAniAF.safetensors",
+        "is_compatible": true
+    },
+    {
+        "image": "images/watercolor.png",
+        "title": "Watercolor Style",
+        "repo": "ostris/watercolor_style_lora_sdxl",
+        "trigger_word": "",
+        "weights": "watercolor_v1_sdxl.safetensors",
+        "is_compatible": false
+    },
+    {
+        "image": "images/dog.png",
+        "title": "Cyborg Style",
+        "repo": "goofyai/cyborg_style_xl",
+        "trigger_word": "cyborg style",
+        "weights": "cyborg_style_xl-off.safetensors",
+        "is_compatible": true
+    },
+    {
+        "image": "images/ToyRedmond-ToyLoraForSDXL10.png",
+        "title": "Toy.Redmond",
+        "repo": "artificialguybr/ToyRedmond-ToyLoraForSDXL10",
+        "trigger_word": "FnkRedmAF",
+        "weights": "ToyRedmond-FnkRedmAF.safetensors",
+        "is_compatible": true
+    },
+    {
+        "image": "images/voxel-xl-lora.png",
+        "title": "Voxel XL",
+        "repo": "Fictiverse/Voxel_XL_Lora",
+        "trigger_word": "voxel style",
+        "weights": "VoxelXL_v1.safetensors",
+        "is_compatible": true
+    },
+    {
+        "image": "images/crayon.png",
+        "title": "Crayon Style",
+        "repo": "ostris/crayon_style_lora_sdxl",
+        "trigger_word": "",
+        "weights": "crayons_v1_sdxl.safetensors",
+        "is_compatible": false
+    },
+    {
+        "image": "images/pikachu.webp",
+        "title": "Pikachu XL",
+        "repo": "TheLastBen/Pikachu_SDXL",
+        "trigger_word": "pikachu",
+        "weights": "pikachu.safetensors",
+        "is_compatible": false
+    },
+    {
+        "image": "images/william_eggleston.webp",
+        "title": "William Eggleston Style",
+        "repo": "TheLastBen/William_Eggleston_Style_SDXL",
+        "trigger_word": "by william eggleston",
+        "weights": "wegg.safetensors",
+        "is_compatible": false
+    },
+    {
+        "image": "images/josef_koudelka.webp",
+        "title": "Josef Koudelka Style",
+        "repo": "TheLastBen/Josef_Koudelka_Style_SDXL",
+        "trigger_word": "by josef koudelka",
+        "weights": "koud.safetensors",
+        "is_compatible": false
+    },
+    {
+        "image": "images/corgi_brick.jpeg",
+        "title": "Lego BrickHeadz",
+        "repo": "nerijs/lego-brickheadz-xl",
+        "trigger_word": "lego brickheadz",
+        "weights": "legobrickheadz-v1.0-000004.safetensors",
+        "is_compatible": true
+    }
+]
