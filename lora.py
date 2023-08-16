@@ -114,7 +114,7 @@ class LoRAModule(torch.nn.Module):
 
         lx = self.lora_up(lx)
 
-        return org_forwarded + lx * self.multiplier #* scale
+        return org_forwarded + lx * self.multiplier * scale
 
 
 class LoRAInfModule(LoRAModule):
@@ -219,7 +219,12 @@ class LoRAInfModule(LoRAModule):
 
     def default_forward(self, x):
         # print("default_forward", self.lora_name, x.size())
-        return self.org_forward(x) + self.lora_up(self.lora_down(x)) * self.multiplier #* self.scale
+        org_forward = self.org_forward(x)
+        lora_up_down = self.lora_up(self.lora_down(x))
+        print(org_forward)
+        print(lora_up_down)
+        print(self.multiplier)
+        return org_forward + lora_up_down * self.multiplier #* self.scale
 
     def forward(self, x):
         if not self.enabled:
