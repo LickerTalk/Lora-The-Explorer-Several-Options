@@ -83,7 +83,6 @@ def run_lora(prompt, negative, weight, selected_state):
                     for_inference=True,
                 )
                 lora_model.apply_to(pipe.text_encoder, pipe.unet) #is apply too all you need?
-                pipe.to(device)
             last_merged = True
 
     image = pipe(
