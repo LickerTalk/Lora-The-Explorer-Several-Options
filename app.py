@@ -85,7 +85,7 @@ def run_lora(prompt, negative, weight, selected_state):
                 )
                 lora_model = lora_model.to("cuda")
                 lora_model.apply_to(pipe.text_encoder, pipe.unet)
-                
+                lora_model = lora_model.to("cuda")
             last_merged = True
 
     image = pipe(
