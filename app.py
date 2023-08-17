@@ -67,8 +67,8 @@ def update_selection(selected_state: gr.SelectData):
                     image = pipe(prompt, num_inference_steps=30, guidance_scale=7.5, cross_attention_kwargs={{"scale":lora_weight}}).images[0]
                     image.save("image.png")
                     ```
-                    """
-    use_with_uis = f"""
+                    '''
+    use_with_uis = f'''
     ## Use it with Comfy UI, Invoke AI, SD.Next, AUTO1111: 
 
     ### Download the `*.safetensors` weights of [here](https://huggingface.co/{lora_repo}/resolve/main/{weight_name})
