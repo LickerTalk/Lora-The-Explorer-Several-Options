@@ -93,7 +93,7 @@
       "repo": "minimaxir/sdxl-ugly-sonic-lora",
       "trigger_word": "sonic the hedgehog",
       "weights": "pytorch_lora_weights.bin",
-      "is_compatible": false
+      "is_compatible": true
     },
     {
         "image": "images/crayon.png",
