@@ -1,8 +1,8 @@
 #title{text-align: center;}
 #title h1{font-size: 3em; display:inline-flex; align-items:center}
 #title img{width: 100px; margin-right: 0.5em}
-#prompt textarea{width: calc(100% - 160px);border-top-right-radius: 0px;border-bottom-right-radius: 0px;}
-#run_button{position:absolute;margin-top: 38px;right: 0;margin-right: 0.8em;border-bottom-left-radius: 0px;
+#prompt input{width: calc(100% - 160px);border-top-right-radius: 0px;border-bottom-right-radius: 0px;}
+#run_button{position:absolute;margin-top: 11px;right: 0;margin-right: 0.8em;border-bottom-left-radius: 0px;
     border-top-left-radius: 0px;}
 #gallery{display:flex}
 #gallery .grid-wrap{min-height: 100%;}
