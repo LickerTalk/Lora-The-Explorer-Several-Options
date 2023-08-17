@@ -8,6 +8,14 @@
         "is_compatible": true
     },
     {
+        "image": "images/crayon.png",
+        "title": "Crayon Style",
+        "repo": "ostris/crayon_style_lora_sdxl",
+        "trigger_word": "",
+        "weights": "crayons_v1_sdxl.safetensors",
+        "is_compatible": false
+    },
+    {
         "image": "images/papercut_SDXL.jpeg",
         "title": "Papercut SDXL",
         "repo": "TheLastBen/Papercut_SDXL",
@@ -37,22 +45,6 @@
         "repo": "goofyai/3d_render_style_xl",
         "trigger_word": "3d style",
         "weights": "3d_render_style_xl.safetensors",
-        "is_compatible": true
-    },
-    {
-        "image": "images/LogoRedmond-LogoLoraForSDXL.jpeg",
-        "title": "Logo.Redmond",
-        "repo": "artificialguybr/LogoRedmond-LogoLoraForSDXL",
-        "trigger_word": "LogoRedAF",
-        "weights": "LogoRedmond_LogoRedAF.safetensors",
-        "is_compatible": true
-    },
-    {
-        "image": "images/LineAni.Redmond.png",
-        "title": "LinearManga.Redmond",
-        "repo": "artificialguybr/LineAniRedmond-LinearMangaSDXL",
-        "trigger_word": "LineAniAF",
-        "weights": "LineAniRedmond-LineAniAF.safetensors",
         "is_compatible": true
     },
     {
@@ -96,12 +88,12 @@
       "is_compatible": true
     },
     {
-        "image": "images/crayon.png",
-        "title": "Crayon Style",
-        "repo": "ostris/crayon_style_lora_sdxl",
-        "trigger_word": "",
-        "weights": "crayons_v1_sdxl.safetensors",
-        "is_compatible": false
+        "image": "images/corgi_brick.jpeg",
+        "title": "Lego BrickHeadz",
+        "repo": "nerijs/lego-brickheadz-xl",
+        "trigger_word": "lego brickheadz",
+        "weights": "legobrickheadz-v1.0-000004.safetensors",
+        "is_compatible": true
     },
     {
         "image": "images/pikachu.webp",
@@ -119,6 +111,22 @@
         "weights": "wegg.safetensors",
         "is_compatible": false
     },
+      {
+        "image": "images/LogoRedmond-LogoLoraForSDXL.jpeg",
+        "title": "Logo.Redmond",
+        "repo": "artificialguybr/LogoRedmond-LogoLoraForSDXL",
+        "trigger_word": "LogoRedAF",
+        "weights": "LogoRedmond_LogoRedAF.safetensors",
+        "is_compatible": true
+    },
+    {
+        "image": "images/LineAni.Redmond.png",
+        "title": "LinearManga.Redmond",
+        "repo": "artificialguybr/LineAniRedmond-LinearMangaSDXL",
+        "trigger_word": "LineAniAF",
+        "weights": "LineAniRedmond-LineAniAF.safetensors",
+        "is_compatible": true
+    },
     {
         "image": "images/josef_koudelka.webp",
         "title": "Josef Koudelka Style",
@@ -126,13 +134,5 @@
         "trigger_word": "by josef koudelka",
         "weights": "koud.safetensors",
         "is_compatible": false
-    },
-    {
-        "image": "images/corgi_brick.jpeg",
-        "title": "Lego BrickHeadz",
-        "repo": "nerijs/lego-brickheadz-xl",
-        "trigger_word": "lego brickheadz",
-        "weights": "legobrickheadz-v1.0-000004.safetensors",
-        "is_compatible": true
     }
 ]
