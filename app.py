@@ -9,16 +9,17 @@ import copy
 import json
 
 with open("sdxl_loras.json", "r") as file:
+    data = json.load(file)
     sdxl_loras = [
-        (
-            item["image"],
-            item["title"],
-            item["repo"],
-            item["trigger_word"],
-            item["weights"],
-            item["is_compatible"],
-        )
-        for item in json.load(file)
+        {
+            "image": item["image"],
+            "title": item["title"],
+            "repo": item["repo"],
+            "trigger_word": item["trigger_word"],
+            "weights": item["weights"],
+            "is_compatible": item["is_compatible"],
+        }
+        for item in data
     ]
 
 saved_names = [
@@ -43,10 +44,10 @@ last_merged = False
 
 
 def update_selection(selected_state: gr.SelectData):
-    lora_repo = sdxl_loras[selected_state.index][2]
-    instance_prompt = sdxl_loras[selected_state.index][3]
+    lora_repo = sdxl_loras[selected_state.index]["repo"]
+    instance_prompt = sdxl_loras[selected_state.index]["trigger_word"]
     new_placeholder = "Type a prompt! This style works for all prompts without a trigger word" if instance_prompt == "" else "Type a prompt to use your selected LoRA"
-    weight_name = sdxl_loras[selected_state.index][4]
+    weight_name = sdxl_loras[selected_state.index]["weights"]
     updated_text = f"### Selected: [{lora_repo}](https://huggingface.co/{lora_repo}) ✨"
     use_with_diffusers = f'''
                     ## Using [`{lora_repo}`](https://huggingface.co/{lora_repo})
@@ -93,52 +94,49 @@ def check_selected(selected_state):
     if not selected_state:
         raise gr.Error("You must select a LoRA")
 
-def run_lora(prompt, negative, lora_scale, selected_state):
-    global last_lora, last_merged, pipe
+def get_cross_attention_kwargs(scale, repo_name, is_compatible):
+    if repo_name != last_lora and is_compatible:
+        return {"scale": scale}
+    return None
+
+def load_lora_model(pipe, repo_name, full_path_lora, lora_scale):
+    if repo_name == last_lora:
+        return
     
-    if not selected_state:
-        raise gr.Error("You must select a LoRA")
-        
-    if negative == "":
-        negative = None
+    if last_merged:
+        pipe = copy.deepcopy(original_pipe)
+        pipe.to(device)
+    else:
+        pipe.unload_lora_weights()
 
-    
-    repo_name = sdxl_loras[selected_state.index][2]
-    weight_name = sdxl_loras[selected_state.index][4]
-    full_path_lora = saved_names[selected_state.index]
-    cross_attention_kwargs = None
-    if last_lora != repo_name:
-        if last_merged:
-            pipe = copy.deepcopy(original_pipe)
-            pipe.to(device)
+    is_compatible = sdxl_loras[selected_state.index]["is_compatible"]
+    if is_compatible:
+        pipe.load_lora_weights(full_path_lora)
+    else:
+        load_incompatible_lora(pipe, full_path_lora, lora_scale)
+
+def load_incompatible_lora(pipe, full_path_lora, lora_scale):
+    for weights_file in [full_path_lora]:
+        if ";" in weights_file:
+            weights_file, multiplier = weights_file.split(";")
+            multiplier = float(multiplier)
         else:
-            pipe.unload_lora_weights()
-        is_compatible = sdxl_loras[selected_state.index][5]
-        if is_compatible:
-            pipe.load_lora_weights(full_path_lora)
-            cross_attention_kwargs = {"scale": lora_scale}
-        else:
-            for weights_file in [full_path_lora]:
-                if ";" in weights_file:
-                    weights_file, multiplier = weights_file.split(";")
-                    multiplier = float(multiplier)
-                else:
-                    multiplier = lora_scale
+            multiplier = lora_scale
 
-                lora_model, weights_sd = lora.create_network_from_weights(
-                    multiplier,
-                    full_path_lora,
-                    pipe.vae,
-                    pipe.text_encoder,
-                    pipe.unet,
-                    for_inference=True,
-                )
-                lora_model.merge_to(
-                    pipe.text_encoder, pipe.unet, weights_sd, torch.float16, "cuda"
-                )
-            last_merged = True
+        lora_model, weights_sd = lora.create_network_from_weights(
+            multiplier,
+            full_path_lora,
+            pipe.vae,
+            pipe.text_encoder,
+            pipe.unet,
+            for_inference=True,
+        )
+        lora_model.merge_to(
+            pipe.text_encoder, pipe.unet, weights_sd, torch.float16, "cuda"
+        )
 
-    image = pipe(
+def generate_image(pipe, prompt, negative, cross_attention_kwargs):
+    return pipe(
         prompt=prompt,
         negative_prompt=negative,
         width=768,
@@ -147,6 +145,26 @@ def run_lora(prompt, negative, lora_scale, selected_state):
         guidance_scale=7.5,
         cross_attention_kwargs=cross_attention_kwargs,
     ).images[0]
+
+def run_lora(prompt, negative, lora_scale, selected_state):
+    global last_lora, last_merged, pipe
+
+    if not selected_state:
+        raise gr.Error("You must select a LoRA")
+        
+    if negative == "":
+        negative = None
+
+    repo_name = sdxl_loras[selected_state.index]["repo"]
+    full_path_lora = saved_names[selected_state.index]
+
+    cross_attention_kwargs = get_cross_attention_kwargs(
+        lora_scale, repo_name, sdxl_loras[selected_state.index]["is_compatible"])
+
+    load_lora_model(pipe, repo_name, full_path_lora, lora_scale)
+
+    image = generate_image(pipe, prompt, negative, cross_attention_kwargs)
+    
     last_lora = repo_name
     return image, gr.update(visible=True)
 
@@ -235,7 +253,7 @@ with gr.Blocks(css="custom.css") as demo:
         inputs=[selected_state],
         queue=False,
         show_progress=False
-    ).then(
+    ).success(
         fn=run_lora,
         inputs=[prompt, negative, weight, selected_state],
         outputs=[result, share_group],
@@ -245,7 +263,7 @@ with gr.Blocks(css="custom.css") as demo:
         inputs=[selected_state],
         queue=False,
         show_progress=False
-    ).then(
+    ).success(
         fn=run_lora,
         inputs=[prompt, negative, weight, selected_state],
         outputs=[result, share_group],
