@@ -19,3 +19,9 @@ div#share-btn-container > div {flex-direction: row;background: black;align-items
 #share-btn-container.hidden {display: none!important}
 #extra_info{margin-top: 1em}
 .pending .min {min-height: auto}
+
+@media (max-width: 527px) {
+  #gallery {
+    max-height: 370px;
+  }
+}
