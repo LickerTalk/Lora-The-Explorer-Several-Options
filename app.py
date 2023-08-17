@@ -46,7 +46,7 @@ last_merged = False
 def update_selection(selected_state: gr.SelectData):
     lora_repo = sdxl_loras[selected_state.index]["repo"]
     instance_prompt = sdxl_loras[selected_state.index]["trigger_word"]
-    new_placeholder = "Type a prompt! This style works for all prompts without a trigger word" if instance_prompt == "" else "Type a prompt to use your selected LoRA"
+    new_placeholder = "Type a prompt. This LoRA applies for all prompts, no need for a trigger word" if instance_prompt == "" else "Type a prompt to use your selected LoRA"
     weight_name = sdxl_loras[selected_state.index]["weights"]
     updated_text = f"### Selected: [{lora_repo}](https://huggingface.co/{lora_repo}) ✨"
     is_compatible = sdxl_loras[selected_state.index]["is_compatible"]
