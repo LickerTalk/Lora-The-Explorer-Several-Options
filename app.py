@@ -47,7 +47,7 @@ def update_selection(selected_state: gr.SelectData):
     instance_prompt = sdxl_loras[selected_state.index][3]
     weight_name = sdxl_loras[selected_state.index][4]
     updated_text = f"### Selected: [{lora_repo}](https://huggingface.co/{lora_repo})"
-    use_with_diffusers = f"""
+    use_with_diffusers = f'''
                     ## Using [`{lora_repo}`](https://huggingface.co/{lora_repo})
                     
                     ## Use it with diffusers: 
@@ -77,7 +77,7 @@ def update_selection(selected_state: gr.SelectData):
     - [Invoke AI guide](https://invoke-ai.github.io/InvokeAI/features/CONCEPTS/?h=lora#using-loras)
     - [SD.Next guide](https://github.com/vladmandic/automatic)
     - [AUTOMATIC1111 guide](https://stable-diffusion-art.com/lora/)
-    """
+    '''
     return (
         updated_text,
         instance_prompt,
@@ -87,7 +87,7 @@ def update_selection(selected_state: gr.SelectData):
     )
 
 
-def run_lora(prompt, negative, weight, selected_state):
+def run_lora(prompt, negative, lora_scale, selected_state):
     global last_lora, last_merged, pipe
 
     if negative == "":
@@ -108,14 +108,14 @@ def run_lora(prompt, negative, weight, selected_state):
         is_compatible = sdxl_loras[selected_state.index][5]
         if is_compatible:
             pipe.load_lora_weights(full_path_lora)
-            cross_attention_kwargs = {"scale": weight}
+            cross_attention_kwargs = {"scale": lora_scale}
         else:
             for weights_file in [full_path_lora]:
                 if ";" in weights_file:
                     weights_file, multiplier = weights_file.split(";")
-                    multiplier = float(weight)
+                    multiplier = float(multiplier)
                 else:
-                    multiplier = 1.0
+                    multiplier = lora_scale
 
                 lora_model, weights_sd = lora.create_network_from_weights(
                     multiplier,
