@@ -64,11 +64,11 @@ ${inputPrompt}
 <img src="${outputImgEl}" />
 `;
     const params = new URLSearchParams({
-        title: "${inputPrompt}",
+        title: inputPrompt,
         preview: true
     });
 	const paramsStr = params.toString();
-	window.open(`https://huggingface.co/spaces/multimodalart/lora-the-explorer/discussions/new?${paramsStr}`, '_blank');
+	window.open(`https://huggingface.co/spaces/multimodalart/LoraTheExplorer/discussions/new?${paramsStr}`, '_blank');
     shareBtnEl.style.removeProperty('pointer-events');
     shareIconEl.style.removeProperty('display');
     loadingIconEl.style.display = 'none';
