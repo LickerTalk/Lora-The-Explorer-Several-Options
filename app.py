@@ -158,6 +158,7 @@ def run_lora(prompt, negative, lora_scale, selected_state):
         cross_attention_kwargs=cross_attention_kwargs,
     ).images[0]
     last_lora = repo_name
+    gc.collect()
     return image, gr.update(visible=True)
 
 
