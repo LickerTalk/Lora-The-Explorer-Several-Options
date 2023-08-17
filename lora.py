@@ -1,4 +1,4 @@
-# LoRA network module
+# LoRA network module taken from https://github.com/bmaltais/kohya_ss/blob/master/networks/lora.py
 # reference:
 # https://github.com/microsoft/LoRA/blob/main/loralib/layers.py
 # https://github.com/cloneofsimo/lora/blob/master/lora_diffusion/lora.py
