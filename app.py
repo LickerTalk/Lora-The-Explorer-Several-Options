@@ -45,7 +45,7 @@ last_merged = False
 def update_selection(selected_state: gr.SelectData):
     lora_repo = sdxl_loras[selected_state.index][2]
     instance_prompt = sdxl_loras[selected_state.index][3]
-    new_placeholder = "Type a prompt! This style works for all prompts without a trigger word" if instance_prompt == "Type a prompt to use your selected LoRA" else 
+    new_placeholder = "Type a prompt! This style works for all prompts without a trigger word" if instance_prompt == "" else "Type a prompt to use your selected LoRA"
     weight_name = sdxl_loras[selected_state.index][4]
     updated_text = f"### Selected: [{lora_repo}](https://huggingface.co/{lora_repo}) ✨"
     use_with_diffusers = f'''
@@ -89,14 +89,20 @@ def update_selection(selected_state: gr.SelectData):
     )
 
 
+def check_selected(selected_state):
+    if not selected_state:
+        raise gr.Error("You must select a LoRA")
+
 def run_lora(prompt, negative, lora_scale, selected_state):
     global last_lora, last_merged, pipe
-
+    
+    if not selected_state:
+        raise gr.Error("You must select a LoRA")
+        
     if negative == "":
         negative = None
 
-    if not selected_state:
-        raise gr.Error("You must select a LoRA")
+    
     repo_name = sdxl_loras[selected_state.index][2]
     weight_name = sdxl_loras[selected_state.index][4]
     full_path_lora = saved_names[selected_state.index]
@@ -225,15 +231,26 @@ with gr.Blocks(css="custom.css") as demo:
         show_progress=False,
     )
     prompt.submit(
+        fn=check_selected,
+        inputs=[selected_state],
+        queue=False,
+        show_progress=False
+    ).then(
         fn=run_lora,
         inputs=[prompt, negative, weight, selected_state],
         outputs=[result, share_group],
     )
     button.click(
+        fn=check_selected,
+        inputs=[selected_state],
+        queue=False,
+        show_progress=False
+    ).then(
         fn=run_lora,
         inputs=[prompt, negative, weight, selected_state],
         outputs=[result, share_group],
     )
     share_button.click(None, [], [], _js=share_js)
 
+demo.queue(max_size=20)
 demo.launch()
