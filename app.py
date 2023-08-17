@@ -49,6 +49,8 @@ def update_selection(selected_state: gr.SelectData):
     new_placeholder = "Type a prompt! This style works for all prompts without a trigger word" if instance_prompt == "" else "Type a prompt to use your selected LoRA"
     weight_name = sdxl_loras[selected_state.index]["weights"]
     updated_text = f"### Selected: [{lora_repo}](https://huggingface.co/{lora_repo}) ✨"
+    is_compatible = sdxl_loras[selected_state.index]["is_compatible"]
+    
     use_with_diffusers = f"""
     ## Using [`{lora_repo}`](https://huggingface.co/{lora_repo})
                         
