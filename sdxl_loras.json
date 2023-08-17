@@ -110,7 +110,7 @@
       "trigger word": "jojoso style",
       "weights": "SDXL-jojoso_style-Lora-r8.safetensors",
       "is_compatible": false
-    }
+    },
     {
         "image": "images/pikachu.webp",
         "title": "Pikachu XL",
