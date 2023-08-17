@@ -7,6 +7,7 @@ import lora
 from time import sleep
 import copy
 import json
+import gc
 
 with open("sdxl_loras.json", "r") as file:
     data = json.load(file)
@@ -35,10 +36,13 @@ pipe = StableDiffusionXLPipeline.from_pretrained(
     "stabilityai/stable-diffusion-xl-base-1.0",
     vae=vae,
     torch_dtype=torch.float16,
-).to(device)
+).to("cpu")
+original_pipe = copy.deepcopy(pipe)
+pipe.to(device)
 
 last_lora = ""
 last_merged = False
+
 
 def update_selection(selected_state: gr.SelectData):
     lora_repo = sdxl_loras[selected_state.index]["repo"]
@@ -129,11 +133,10 @@ def run_lora(prompt, negative, lora_scale, selected_state):
     cross_attention_kwargs = None
     if last_lora != repo_name:
         if last_merged:
-            pipe = StableDiffusionXLPipeline.from_pretrained(
-                "stabilityai/stable-diffusion-xl-base-1.0",
-                vae=vae,
-                torch_dtype=torch.float16,
-            ).to(device)
+            del pipe
+            gc.collect()
+            pipe = copy.deepcopy(original_pipe)
+            pipe.to(device)
         else:
             pipe.unload_lora_weights()
         is_compatible = sdxl_loras[selected_state.index]["is_compatible"]
