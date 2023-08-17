@@ -104,6 +104,14 @@
         "is_compatible": true
     },
     {
+      "image": "images/jojoso1.jpg",
+      "title": "JoJo's Bizarre style",
+      "repo": "Norod78/SDXL-jojoso_style-Lora",
+      "trigger word": "jojoso style",
+      "weights": "SDXL-jojoso_style-Lora-r8.safetensors",
+      "is_compatible": false
+    }
+    {
         "image": "images/pikachu.webp",
         "title": "Pikachu XL",
         "repo": "TheLastBen/Pikachu_SDXL",
