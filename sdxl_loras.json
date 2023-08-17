@@ -134,5 +134,13 @@
         "trigger_word": "by josef koudelka",
         "weights": "koud.safetensors",
         "is_compatible": false
+    },
+    {
+      "image": "images/the_fish.jpg",
+      "title": "THE FISH",
+      "repo": "TheLastBen/THE_FISH",
+      "trigger_word": "daiton",
+      "weights": "fish_daiton.safetensors",
+      "is_compatible": false
     }
 ]
