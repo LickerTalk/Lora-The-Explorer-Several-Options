@@ -98,7 +98,7 @@ def get_cross_attention_kwargs(scale, repo_name, is_compatible):
         return {"scale": scale}
     return None
 
-def load_lora_model(pipe, repo_name, full_path_lora, lora_scale):
+def load_lora_model(pipe, repo_name, full_path_lora, lora_scale, selected_state):
     if repo_name == last_lora:
         return
     
@@ -160,7 +160,7 @@ def run_lora(prompt, negative, lora_scale, selected_state):
     cross_attention_kwargs = get_cross_attention_kwargs(
         lora_scale, repo_name, sdxl_loras[selected_state.index]["is_compatible"])
 
-    load_lora_model(pipe, repo_name, full_path_lora, lora_scale)
+    load_lora_model(pipe, repo_name, full_path_lora, lora_scale, selected_state)
 
     image = generate_image(pipe, prompt, negative, cross_attention_kwargs)
     
