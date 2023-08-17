@@ -93,49 +93,54 @@ def check_selected(selected_state):
     if not selected_state:
         raise gr.Error("You must select a LoRA")
 
-def get_cross_attention_kwargs(scale, repo_name, is_compatible):
-    if repo_name != last_lora and is_compatible:
-        return {"scale": scale}
-    return None
-
-def load_lora_model(pipe, repo_name, full_path_lora, lora_scale, selected_state):
-    if repo_name == last_lora:
-        return
-    
-    if last_merged:
-        pipe = copy.deepcopy(original_pipe)
-        pipe.to(device)
-    else:
-        pipe.unload_lora_weights()
-
-    is_compatible = sdxl_loras[selected_state.index]["is_compatible"]
-    if is_compatible:
-        pipe.load_lora_weights(full_path_lora)
-    else:
-        load_incompatible_lora(pipe, full_path_lora, lora_scale)
-
-def load_incompatible_lora(pipe, full_path_lora, lora_scale):
+def merge_incompatible_lora(full_path_lora, lora_scale):
     for weights_file in [full_path_lora]:
-        if ";" in weights_file:
-            weights_file, multiplier = weights_file.split(";")
-            multiplier = float(multiplier)
+                if ";" in weights_file:
+                    weights_file, multiplier = weights_file.split(";")
+                    multiplier = float(multiplier)
+                else:
+                    multiplier = lora_scale
+
+                lora_model, weights_sd = lora.create_network_from_weights(
+                    multiplier,
+                    full_path_lora,
+                    pipe.vae,
+                    pipe.text_encoder,
+                    pipe.unet,
+                    for_inference=True,
+                )
+                lora_model.merge_to(
+                    pipe.text_encoder, pipe.unet, weights_sd, torch.float16, "cuda"
+                )
+
+def run_lora(prompt, negative, lora_scale, selected_state):
+    global last_lora, last_merged, pipe
+
+    if negative == "":
+        negative = None
+
+    if not selected_state:
+        raise gr.Error("You must select a LoRA")
+    repo_name = sdxl_loras[selected_state.index]["repo"]
+    weight_name = sdxl_loras[selected_state.index]["weights"]
+    full_path_lora = saved_names[selected_state.index]
+    cross_attention_kwargs = None
+    if last_lora != repo_name:
+        if last_merged:
+            pipe = copy.deepcopy(original_pipe)
+            pipe.to(device)
         else:
-            multiplier = lora_scale
+            pipe.unload_lora_weights()
+        is_compatible = sdxl_loras[selected_state.index]["is_compatible"]
+        
+        if is_compatible:
+            pipe.load_lora_weights(full_path_lora)
+            cross_attention_kwargs = {"scale": lora_scale}
+        else:
+            merge_incompatible_lora(full_path_lora, lora_scale)
+            last_merged = True
 
-        lora_model, weights_sd = lora.create_network_from_weights(
-            multiplier,
-            full_path_lora,
-            pipe.vae,
-            pipe.text_encoder,
-            pipe.unet,
-            for_inference=True,
-        )
-        lora_model.merge_to(
-            pipe.text_encoder, pipe.unet, weights_sd, torch.float16, "cuda"
-        )
-
-def generate_image(pipe, prompt, negative, cross_attention_kwargs):
-    return pipe(
+    image = pipe(
         prompt=prompt,
         negative_prompt=negative,
         width=768,
@@ -144,26 +149,6 @@ def generate_image(pipe, prompt, negative, cross_attention_kwargs):
         guidance_scale=7.5,
         cross_attention_kwargs=cross_attention_kwargs,
     ).images[0]
-
-def run_lora(prompt, negative, lora_scale, selected_state):
-    global last_lora, last_merged, pipe
-
-    if not selected_state:
-        raise gr.Error("You must select a LoRA")
-        
-    if negative == "":
-        negative = None
-
-    repo_name = sdxl_loras[selected_state.index]["repo"]
-    full_path_lora = saved_names[selected_state.index]
-
-    cross_attention_kwargs = get_cross_attention_kwargs(
-        lora_scale, repo_name, sdxl_loras[selected_state.index]["is_compatible"])
-
-    load_lora_model(pipe, repo_name, full_path_lora, lora_scale, selected_state)
-
-    image = generate_image(pipe, prompt, negative, cross_attention_kwargs)
-    
     last_lora = repo_name
     return image, gr.update(visible=True)
 
