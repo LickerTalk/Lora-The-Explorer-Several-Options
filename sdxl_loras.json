@@ -95,7 +95,7 @@
       "weights": "pytorch_lora_weights.bin",
       "is_compatible": true
       
-    }
+    },
     {
         "image": "images/crayon.png",
         "title": "Crayon Style",
