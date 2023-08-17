@@ -46,7 +46,7 @@ def update_selection(selected_state: gr.SelectData):
     lora_repo = sdxl_loras[selected_state.index][2]
     instance_prompt = sdxl_loras[selected_state.index][3]
     weight_name = sdxl_loras[selected_state.index][4]
-    updated_text = f"### Selected: [{lora_repo}](https://huggingface.co/{lora_repo})"
+    updated_text = f"### Selected: [{lora_repo}](https://huggingface.co/{lora_repo}) ✨"
     use_with_diffusers = f'''
                     ## Using [`{lora_repo}`](https://huggingface.co/{lora_repo})
                     
