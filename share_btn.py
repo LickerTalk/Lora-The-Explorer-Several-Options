@@ -38,8 +38,8 @@ share_js = """async () => {
 	}
     
     const gradioEl = document.querySelector("gradio-app").shadowRoot || document.querySelector('body > gradio-app');
-    const selectedLoRA = gradioEl.querySelector('#selected_lora h3').innerHTML;
-    const inputPrompt = gradioEl.querySelector('#prompt textarea').value;
+    const selectedLoRA = gradioEl.querySelector('#selected_lora').innerHTML;
+    const inputPrompt = gradioEl.querySelector('#prompt input').value;
     const outputImgEl = gradioEl.querySelector('#result-image img');
     
     const shareBtnEl = gradioEl.querySelector('#share-btn');
@@ -55,7 +55,7 @@ share_js = """async () => {
     
     const descriptionMd = `
 
-<h3>${selectedLoRA}</h3>
+${selectedLoRA}
 
 ### Prompt
 ${inputPrompt}
