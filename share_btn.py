@@ -65,6 +65,7 @@ ${inputPrompt}
 `;
     const params = new URLSearchParams({
         title: inputPrompt,
+        description: descriptionMd,
         preview: true
     });
 	const paramsStr = params.toString();
