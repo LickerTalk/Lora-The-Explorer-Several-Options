@@ -49,26 +49,33 @@ def update_selection(selected_state: gr.SelectData):
     new_placeholder = "Type a prompt! This style works for all prompts without a trigger word" if instance_prompt == "" else "Type a prompt to use your selected LoRA"
     weight_name = sdxl_loras[selected_state.index]["weights"]
     updated_text = f"### Selected: [{lora_repo}](https://huggingface.co/{lora_repo}) ✨"
-    use_with_diffusers = f'''
+    use_with_diffusers = f"""
     ## Using [`{lora_repo}`](https://huggingface.co/{lora_repo})
-                    
-    ## Use it with diffusers: 
+                        
+    ## Use it with diffusers:
+    """
+    if is_compatible:
+        use_with_diffusers += f'''
+        ```python
+        from diffusers import StableDiffusionXLPipeline
+        import torch
+    
+        model_path = "stabilityai/stable-diffusion-xl-base-1.0"
+        pipe = StableDiffusionPipeline.from_pretrained(model_path, torch_dtype=torch.float16)
+        pipe.to("cuda")
+        pipe.load_lora_weights("{lora_repo}", weight_name="{weight_name}")
+    
+        prompt = "{instance_prompt}..."
+        lora_weight = 0.5
+        image = pipe(prompt, num_inference_steps=30, guidance_scale=7.5, cross_attention_kwargs={{"scale": lora_weight}}).images[0]
+        image.save("image.png")
+        ```
+        '''
+    else:
+        use_with_diffusers += '''
+        This LoRA is not compatible with diffusers natively yet. But you can still use it on diffusers with `bmaltais/kohya_ss` LoRA class, check out this [Google Colab](https://colab.research.google.com/drive/14aEJsKdEQ9_kyfsiV6JDok799kxPul0j )
+        '''
 
-    ```python
-    from diffusers import StableDiffusionXLPipeline
-    import torch
-
-    model_path = "stabilityai/stable-diffusion-xl-base-1.0"
-    pipe = StableDiffusionPipeline.from_pretrained(model_path, torch_dtype=torch.float16)
-    pipe.to("cuda")
-    pipe.load_lora_weights("{lora_repo}", weight_name={weight_name})    
-
-    prompt = "{instance_prompt}..." 
-    lora_weight = 0.5
-    image = pipe(prompt, num_inference_steps=30, guidance_scale=7.5, cross_attention_kwargs={{"scale":lora_weight}}).images[0]
-    image.save("image.png")
-    ```
-    '''
     use_with_uis = f'''
     ## Use it with Comfy UI, Invoke AI, SD.Next, AUTO1111: 
 
