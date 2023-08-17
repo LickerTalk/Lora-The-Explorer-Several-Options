@@ -45,6 +45,7 @@ last_merged = False
 def update_selection(selected_state: gr.SelectData):
     lora_repo = sdxl_loras[selected_state.index][2]
     instance_prompt = sdxl_loras[selected_state.index][3]
+    new_placeholder = "Type a prompt! This style works for all prompts without a trigger word" if instance_prompt == "Type a prompt to use your selected LoRA" else 
     weight_name = sdxl_loras[selected_state.index][4]
     updated_text = f"### Selected: [{lora_repo}](https://huggingface.co/{lora_repo}) ✨"
     use_with_diffusers = f'''
@@ -81,6 +82,7 @@ def update_selection(selected_state: gr.SelectData):
     return (
         updated_text,
         instance_prompt,
+        gr.update(placeholder=new_placeholder),
         selected_state,
         use_with_diffusers,
         use_with_uis,
@@ -218,7 +220,7 @@ with gr.Blocks(css="custom.css") as demo:
 
     gallery.select(
         update_selection,
-        outputs=[prompt_title, prompt, selected_state, use_diffusers, use_uis],
+        outputs=[prompt_title, prompt, prompt, selected_state, use_diffusers, use_uis],
         queue=False,
         show_progress=False,
     )
