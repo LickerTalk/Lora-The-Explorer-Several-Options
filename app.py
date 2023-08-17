@@ -156,6 +156,7 @@ with gr.Blocks(css="custom.css") as demo:
             allow_preview=False,
             columns=3,
             elem_id="gallery",
+            show_share_button=False
         )
         with gr.Column():
             prompt_title = gr.Markdown(
