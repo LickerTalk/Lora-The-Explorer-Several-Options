@@ -118,6 +118,9 @@ def merge_incompatible_lora(full_path_lora, lora_scale):
                 lora_model.merge_to(
                     pipe.text_encoder, pipe.unet, weights_sd, torch.float16, "cuda"
                 )
+                del weights_sd
+                del lora_model
+                gc.collect()
 
 def run_lora(prompt, negative, lora_scale, selected_state):
     global last_lora, last_merged, pipe
