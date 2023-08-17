@@ -176,7 +176,7 @@ with gr.Blocks(css="custom.css") as demo:
     selected_state = gr.State()
     with gr.Row():
         gallery = gr.Gallery(
-            value=[(a, b) for a, b, _, _, _, _ in sdxl_loras],
+            value=[(item["image"], item["title"]) for item in sdxl_loras],
             label="SDXL LoRA Gallery",
             allow_preview=False,
             columns=3,
