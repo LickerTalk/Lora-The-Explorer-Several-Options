@@ -132,6 +132,7 @@ def run_lora(prompt, negative, lora_scale, selected_state):
     cross_attention_kwargs = None
     if last_lora != repo_name:
         if last_merged:
+            del pipe
             pipe = copy.deepcopy(original_pipe)
             pipe.to(device)
         else:
