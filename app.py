@@ -23,7 +23,7 @@ with open("sdxl_loras.json", "r") as file:
     ]
 
 saved_names = [
-    hf_hub_download(repo_id, filename) for _, _, repo_id, _, filename, _ in sdxl_loras
+    hf_hub_download(item["repo"], item["weights"]) for item in sdxl_loras
 ]
 
 device = "cuda"  # replace this to `mps` if on a MacOS Silicon
