@@ -38,7 +38,7 @@ share_js = """async () => {
 	}
     
     const gradioEl = document.querySelector("gradio-app").shadowRoot || document.querySelector('body > gradio-app');
-    const selectedLoRA = gradioEl.querySelector('#selected_lora');
+    const selectedLoRA = gradioEl.querySelector('#selected_lora').value;
     const inputPrompt = gradioEl.querySelector('#prompt textarea').value;
     const outputImgEl = gradioEl.querySelector('#result-image img');
     
@@ -61,7 +61,7 @@ share_js = """async () => {
 ${inputPrompt}
 
 #### Generated Image:
-<img src="${outputImgEl}" />
+<img src="${urlInputImg}" />
 `;
     const params = new URLSearchParams({
         title: inputPrompt,
