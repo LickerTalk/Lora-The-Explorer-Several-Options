@@ -51,11 +51,11 @@ def update_selection(selected_state: gr.SelectData):
     updated_text = f"### Selected: [{lora_repo}](https://huggingface.co/{lora_repo}) ✨"
     is_compatible = sdxl_loras[selected_state.index]["is_compatible"]
     
-    use_with_diffusers = f"""
+    use_with_diffusers = f'''
     ## Using [`{lora_repo}`](https://huggingface.co/{lora_repo})
                         
     ## Use it with diffusers:
-    """
+    '''
     if is_compatible:
         use_with_diffusers += f'''
         ```python
@@ -74,9 +74,7 @@ def update_selection(selected_state: gr.SelectData):
         ```
         '''
     else:
-        use_with_diffusers += '''
-        This LoRA is not compatible with diffusers natively yet. But you can still use it on diffusers with `bmaltais/kohya_ss` LoRA class, check out this [Google Colab](https://colab.research.google.com/drive/14aEJsKdEQ9_kyfsiV6JDok799kxPul0j )
-        '''
+        use_with_diffusers += "This LoRA is not compatible with diffusers natively yet. But you can still use it on diffusers with `bmaltais/kohya_ss` LoRA class, check out this [Google Colab](https://colab.research.google.com/drive/14aEJsKdEQ9_kyfsiV6JDok799kxPul0j )"
 
     use_with_uis = f'''
     ## Use it with Comfy UI, Invoke AI, SD.Next, AUTO1111: 
