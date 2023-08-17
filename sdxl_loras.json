@@ -56,6 +56,14 @@
         "is_compatible": false
     },
     {
+        "image": "images/william_eggleston.webp",
+        "title": "William Eggleston Style",
+        "repo": "TheLastBen/William_Eggleston_Style_SDXL",
+        "trigger_word": "by william eggleston",
+        "weights": "wegg.safetensors",
+        "is_compatible": false
+    },
+    {
         "image": "images/dog.png",
         "title": "Cyborg Style",
         "repo": "goofyai/cyborg_style_xl",
@@ -104,14 +112,6 @@
         "is_compatible": false
     },
     {
-        "image": "images/william_eggleston.webp",
-        "title": "William Eggleston Style",
-        "repo": "TheLastBen/William_Eggleston_Style_SDXL",
-        "trigger_word": "by william eggleston",
-        "weights": "wegg.safetensors",
-        "is_compatible": false
-    },
-      {
         "image": "images/LogoRedmond-LogoLoraForSDXL.jpeg",
         "title": "Logo.Redmond",
         "repo": "artificialguybr/LogoRedmond-LogoLoraForSDXL",
