@@ -1,4 +1,4 @@
-#title{text-align: center;margin-bottom: 0.5em;}
+#title{text-align: center;}
 #title h1{font-size: 3em; display:inline-flex; align-items:center}
 #title img{width: 100px; margin-right: 0.5em}
 #prompt textarea{width: calc(100% - 160px);border-top-right-radius: 0px;border-bottom-right-radius: 0px;}
