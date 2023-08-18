@@ -109,7 +109,7 @@
       "repo": "Norod78/SDXL-jojoso_style-Lora",
       "trigger_word": "jojoso style",
       "weights": "SDXL-jojoso_style-Lora-r8.safetensors",
-      "is_compatible": false
+      "is_compatible": true
     },
     {
         "image": "images/pikachu.webp",
