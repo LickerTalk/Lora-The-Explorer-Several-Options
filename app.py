@@ -36,8 +36,8 @@ pipe = StableDiffusionXLPipeline.from_pretrained(
     "stabilityai/stable-diffusion-xl-base-1.0",
     vae=vae,
     torch_dtype=torch.float16,
-).to(device)
-#original_pipe = copy.deepcopy(pipe)
+).to("cpu")
+original_pipe = copy.deepcopy(pipe)
 pipe.to(device)
 
 last_lora = ""
@@ -136,11 +136,10 @@ def run_lora(prompt, negative, lora_scale, selected_state):
     cross_attention_kwargs = None
     if last_lora != repo_name:
         if last_merged:
-            pipe = StableDiffusionXLPipeline.from_pretrained(
-                "stabilityai/stable-diffusion-xl-base-1.0",
-                vae=vae,
-                torch_dtype=torch.float16,
-            ).to(device)
+            del pipe
+            gc.collect()
+            pipe = copy.deepcopy(original_pipe)
+            pipe.to(device)
         else:
             pipe.unload_lora_weights()
         is_compatible = sdxl_loras[selected_state.index]["is_compatible"]
@@ -162,6 +161,7 @@ def run_lora(prompt, negative, lora_scale, selected_state):
         cross_attention_kwargs=cross_attention_kwargs,
     ).images[0]
     last_lora = repo_name
+    gc.collect()
     return image, gr.update(visible=True)
 
 
