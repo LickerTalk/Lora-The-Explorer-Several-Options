@@ -1,4 +1,4 @@
-git+https://github.com/huggingface/diffusers.git
+git+https://github.com/huggingface/diffusers.git@fix/text-encoder-lora-sdxl-2
 transformers
 safetensors
 accelerate
