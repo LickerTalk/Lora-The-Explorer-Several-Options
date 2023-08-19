@@ -186,13 +186,13 @@ with gr.Blocks(css="custom.css") as demo:
                 visible=True,
                 elem_id="selected_lora",
             )
+            with gr.Row():
+                prompt = gr.Textbox(label="Prompt", show_label=False, lines=1, max_lines=1, placeholder="Type a prompt after selecting a LoRA", elem_id="prompt")
+                button = gr.Button("Run", elem_id="run_button")
             with gr.Group(elem_id="share-btn-container", visible=False) as share_group:
                 community_icon = gr.HTML(community_icon_html)
                 loading_icon = gr.HTML(loading_icon_html)
                 share_button = gr.Button("Share to community", elem_id="share-btn")
-            with gr.Row():
-                prompt = gr.Textbox(label="Prompt", show_label=False, lines=1, max_lines=1, placeholder="Type a prompt after selecting a LoRA", elem_id="prompt")
-                button = gr.Button("Run", elem_id="run_button")
             result = gr.Image(
                 interactive=False, label="Generated Image", elem_id="result-image"
             )
