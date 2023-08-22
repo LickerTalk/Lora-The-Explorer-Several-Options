@@ -166,5 +166,5 @@
       "trigger_word":"KidsRedmAF",
       "weights": "StoryBookRedmond-KidsRedmAF.safetensors",
       "is_compatible": false
-    },
+    }
 ]
