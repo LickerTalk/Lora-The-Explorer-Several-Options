@@ -152,11 +152,19 @@
       "is_compatible": false
     },
     {
-      "image":"https://huggingface.co/Norod78/SDXL-simpstyle-Lora/resolve/main/Examples/00023-20230820152208-7780-Dora%20the%20space%20explorer%2C%20simpstyle%20%2C%20Very%20detailed%2C%20clean%2C%20high%20quality%2C%20sharp%20image-before-highres-fix.jpg",
+      "image":"https://huggingface.co/Norod78/SDXL-simpstyle-Lora/resolve/main/Examples/00006-20230820150225-558-the%20girl%20with%20a%20pearl%20earring%20by%20johannes%20vermeer%20simpstyle%20_lora_SDXL-simpstyle-Lora_1_%2C%20Very%20detailed%2C%20clean%2C%20high%20quality%2C%20sh.jpg",
       "title": "SimpStyle",
       "repo": "Norod78/SDXL-simpstyle-Lora",
       "trigger_word":"simpstyle",
       "weights": "SDXL-simpstyle-Lora-r8.safetensors",
       "is_compatible": true
-    }
+    },
+    {
+      "image":"https://huggingface.co/artificialguybr/StoryBookRedmond/resolve/main/00162-1569823442.png",
+      "title": "Storybook.Redmond",
+      "repo": "artificialguybr/StoryBookRedmond",
+      "trigger_word":"KidsRedmAF",
+      "weights": "StoryBookRedmond-KidsRedmAF.safetensors",
+      "is_compatible": false
+    },
 ]
