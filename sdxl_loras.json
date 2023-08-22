@@ -142,5 +142,13 @@
         "trigger_word": "by josef koudelka",
         "weights": "koud.safetensors",
         "is_compatible": false
+    },
+    {
+      "image": "https://huggingface.co/goofyai/Leonardo_Ai_Style_Illustration/resolve/main/leo-2.png",
+      "title": "Leonardo AI Style",
+      "repo": "goofyai/Leonardo_Ai_Style_Illustration",
+      "trigger_word": "leonardo style",
+      "weights": "leonardo_illustration.safetensors",
+      "is_compatible": false
     }
 ]
