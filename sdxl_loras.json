@@ -152,7 +152,7 @@
       "is_compatible": false
     },
     {
-      "image":"",
+      "image":"https://huggingface.co/Norod78/SDXL-simpstyle-Lora/resolve/main/Examples/00023-20230820152208-7780-Dora%20the%20space%20explorer%2C%20simpstyle%20%2C%20Very%20detailed%2C%20clean%2C%20high%20quality%2C%20sharp%20image-before-highres-fix.jpg",
       "title": "SimpStyle",
       "repo": "Norod78/SDXL-simpstyle-Lora",
       "trigger_word":"simpstyle",
