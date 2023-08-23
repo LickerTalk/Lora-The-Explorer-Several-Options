@@ -65,7 +65,7 @@
     },
     {
       "image": "https://huggingface.co/veryVANYA/ps1-graphics-sdxl/resolve/main/2070471.jpeg",
-      "title": "PS1 Graphics SDXL"
+      "title": "PS1 Graphics SDXL",
       "repo":"veryVANYA/ps1-graphics-sdxl",
       "trigger_word": "ps1 style",
       "weights": "ps1_style_SDXL_v1.safetensors",
