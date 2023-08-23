@@ -24,6 +24,14 @@
         "is_compatible": false
     },
     {
+        "image": "https://i.imgur.com/Su4bFgm.png",
+        "title": "Vulcan SDXL",
+        "repo": "davizca87/vulcan",
+        "trigger_word": "v5lcn",
+        "weights": "v5lcnXL-000004.safetensors",
+        "is_compatible": true
+    },
+    {
         "image": "images/lego-minifig-xl.jpeg",
         "title": "Lego Minifig XL",
         "repo": "nerijs/lego-minifig-xl",
@@ -62,6 +70,14 @@
         "trigger_word": "by william eggleston",
         "weights": "wegg.safetensors",
         "is_compatible": false
+    },
+    {
+        "image": "https://huggingface.co/davizca87/c-a-g-coinmaker/resolve/main/1722160.jpeg",
+        "title": "CAG Coinmaker",
+        "repo": "davizca87/c-a-g-coinmaker",
+        "trigger_word": "c01n", 
+        "weights": "c01n-000010.safetensors",
+        "is_compatible": true
     },
     {
         "image": "images/dog.png",
