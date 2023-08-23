@@ -64,6 +64,14 @@
         "is_compatible": false
     },
     {
+      "image": "https://huggingface.co/veryVANYA/ps1-graphics-sdxl/resolve/main/2070471.jpeg",
+      "title": "PS1 Graphics SDXL"
+      "repo":"veryVANYA/ps1-graphics-sdxl",
+      "trigger_word": "ps1 style",
+      "weights": "ps1_style_SDXL_v1.safetensors",
+      "is_compatible": true
+    },
+    {
         "image": "images/william_eggleston.webp",
         "title": "William Eggleston Style",
         "repo": "TheLastBen/William_Eggleston_Style_SDXL",
