@@ -24,6 +24,14 @@
         "is_compatible": false
     },
     {
+      "image": "https://huggingface.co/joachimsallstrom/aether-ghost-lora-for-sdxl/resolve/main/2181193.jpeg",
+      "title": "Aether Ghost",
+      "repo": "joachimsallstrom/aether-ghost-lora-for-sdxl",
+      "trigger_word": "transparent ghost",
+      "weights": "Aether_Ghost_v1.1_LoRA.safetensors",
+      "is_compatible": false
+    },
+    {
         "image": "https://i.imgur.com/Su4bFgm.png",
         "title": "Vulcan SDXL",
         "repo": "davizca87/vulcan",
@@ -78,14 +86,6 @@
         "trigger_word": "by william eggleston",
         "weights": "wegg.safetensors",
         "is_compatible": false
-    },
-    {
-      "image": "https://huggingface.co/joachimsallstrom/aether-ghost-lora-for-sdxl/resolve/main/2181193.jpeg",
-      "title": "Aether Ghost",
-      "repo": "joachimsallstrom/aether-ghost-lora-for-sdxl",
-      "trigger_word": "transparent ghost",
-      "weights": "Aether_Ghost_v1.1_LoRA.safetensors",
-      "is_compatible": false
     },
     {
         "image": "https://huggingface.co/davizca87/c-a-g-coinmaker/resolve/main/1722160.jpeg",
