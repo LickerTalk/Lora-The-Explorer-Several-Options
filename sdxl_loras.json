@@ -198,5 +198,13 @@
       "trigger_word":"KidsRedmAF",
       "weights": "StoryBookRedmond-KidsRedmAF.safetensors",
       "is_compatible": false
+    },
+    {
+      "image": "https://huggingface.co/chillpixel/blacklight-makeup-sdxl-lora/resolve/main/preview.png",
+      "title": "Blacklight Makeup",
+      "repo":"chillpixel/blacklight-makeup-sdxl-lora",
+      "trigger_word": "with blacklight makeup",
+      "weights": "pytorch_lora_weights.bin",
+      "is_compatible": true
     }
 ]
