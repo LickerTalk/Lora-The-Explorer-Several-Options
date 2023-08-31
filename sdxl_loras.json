@@ -37,7 +37,7 @@
       "repo": "joachimsallstrom/aether-ghost-lora-for-sdxl",
       "trigger_word": "transparent ghost",
       "weights": "Aether_Ghost_v1.1_LoRA.safetensors",
-      "is_compatible": false
+      "is_compatible": true
     },
     {
         "image": "https://i.imgur.com/Su4bFgm.png",
