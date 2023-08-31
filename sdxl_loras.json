@@ -57,7 +57,7 @@
     },
     {
       "image": "https://huggingface.co/Norod78/SDXL-LofiGirl-Lora/resolve/main/SDXL-LofiGirl-Lora/Examples/_00044-20230829080050-45-the%20%20girl%20with%20a%20pearl%20earring%20the%20LofiGirl%20%20_lora_SDXL-LofiGirl-Lora_1_%2C%20Very%20detailed%2C%20clean%2C%20high%20quality%2C%20sharp%20image.jpg",
-      "title": "LoFi Girl SDXL"
+      "title": "LoFi Girl SDXL",
       "repo": "Norod78/SDXL-LofiGirl-Lora",
       "trigger_word": "LofiGirl",
       "weights": "SDXL-LofiGirl-Lora.safetensors",
