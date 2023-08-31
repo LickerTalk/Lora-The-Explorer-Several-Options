@@ -88,6 +88,16 @@
         "is_compatible": true
     },
     {
+      "image": "https://tjzk.replicate.delivery/models_models_cover_image/c8b21524-342a-4dd2-bb01-3e65349ed982/image_12.jpeg",
+      "title": "Zelda 64 SDXL",
+      "repo":"jbilcke-hf/sdxl-zelda64",
+      "trigger_word": "<s0><s1>",
+      "weights": "lora.safetensors",
+      "text_embedding_weights": "embeddings.pti",
+      "is_compatible": false,
+      "is_pivotal": true,
+    },
+    {
       "image": "https://huggingface.co/veryVANYA/ps1-graphics-sdxl/resolve/main/2070471.jpeg",
       "title": "PS1 Graphics v2 SDXL",
       "repo":"veryVANYA/ps1-graphics-sdxl-v2",
