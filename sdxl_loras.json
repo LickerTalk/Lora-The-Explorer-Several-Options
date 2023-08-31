@@ -40,12 +40,12 @@
         "is_compatible": true
     },
     {
-        "image": "images/lego-minifig-xl.jpeg",
-        "title": "Lego Minifig XL",
-        "repo": "nerijs/lego-minifig-xl",
-        "trigger_word": "lego minifig",
-        "weights": "legominifig-v1.0-000003.safetensors",
-        "is_compatible": true
+      "image": "https://huggingface.co/chillpixel/blacklight-makeup-sdxl-lora/resolve/main/preview.png",
+      "title": "Blacklight Makeup",
+      "repo":"chillpixel/blacklight-makeup-sdxl-lora",
+      "trigger_word": "with blacklight makeup",
+      "weights": "pytorch_lora_weights.bin",
+      "is_compatible": true
     },
     {
         "image": "images/embroid.png",
@@ -136,6 +136,14 @@
         "is_compatible": true
     },
     {
+        "image": "images/lego-minifig-xl.jpeg",
+        "title": "Lego Minifig XL",
+        "repo": "nerijs/lego-minifig-xl",
+        "trigger_word": "lego minifig",
+        "weights": "legominifig-v1.0-000003.safetensors",
+        "is_compatible": true
+    },
+    {
       "image": "images/jojoso1.jpg",
       "title": "JoJo's Bizarre style",
       "repo": "Norod78/SDXL-jojoso_style-Lora",
@@ -198,13 +206,5 @@
       "trigger_word":"KidsRedmAF",
       "weights": "StoryBookRedmond-KidsRedmAF.safetensors",
       "is_compatible": false
-    },
-    {
-      "image": "https://huggingface.co/chillpixel/blacklight-makeup-sdxl-lora/resolve/main/preview.png",
-      "title": "Blacklight Makeup",
-      "repo":"chillpixel/blacklight-makeup-sdxl-lora",
-      "trigger_word": "with blacklight makeup",
-      "weights": "pytorch_lora_weights.bin",
-      "is_compatible": true
     }
 ]
