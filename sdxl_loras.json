@@ -8,12 +8,20 @@
         "is_compatible": true
     },
     {
+        "image": "https://huggingface.co/Norod78/SDXL-StickerSheet-Lora/resolve/main/Examples/00073-20230831113700-7780-Cthulhu%20StickerSheet%20%20_lora_SDXL-StickerSheet-Lora_1_%2C%20based%20on%20H.P%20Lovecraft%20stories%2C%20Very%20detailed%2C%20clean%2C%20high%20quality%2C%20sharp.jpg",
+        "title": "Sticker Sheet",
+        "repo": "Norod78/SDXL-StickerSheet-Lora",
+        "trigger_word": "StickerSheet",
+        "weights": "SDXL-StickerSheet-Lora.safetensors",
+        "is_compatible": true
+    },
+    {
         "image": "images/crayon.png",
         "title": "Crayon Style",
         "repo": "ostris/crayon_style_lora_sdxl",
         "trigger_word": "",
         "weights": "crayons_v1_sdxl.safetensors",
-        "is_compatible": false
+        "is_compatible": true
     },
     {
         "image": "images/papercut_SDXL.jpeg",
@@ -21,7 +29,7 @@
         "repo": "TheLastBen/Papercut_SDXL",
         "trigger_word": "papercut",
         "weights": "papercut.safetensors",
-        "is_compatible": false
+        "is_compatible": true
     },
     {
       "image": "https://huggingface.co/joachimsallstrom/aether-ghost-lora-for-sdxl/resolve/main/2181193.jpeg",
@@ -29,7 +37,7 @@
       "repo": "joachimsallstrom/aether-ghost-lora-for-sdxl",
       "trigger_word": "transparent ghost",
       "weights": "Aether_Ghost_v1.1_LoRA.safetensors",
-      "is_compatible": false
+      "is_compatible": true
     },
     {
         "image": "https://i.imgur.com/Su4bFgm.png",
@@ -40,11 +48,19 @@
         "is_compatible": true
     },
     {
-      "image": "https://huggingface.co/chillpixel/blacklight-makeup-sdxl-lora/resolve/main/preview.png",
-      "title": "Blacklight Makeup",
-      "repo":"chillpixel/blacklight-makeup-sdxl-lora",
-      "trigger_word": "with blacklight makeup",
-      "weights": "pytorch_lora_weights.bin",
+      "image":"https://huggingface.co/artificialguybr/ColoringBookRedmond/resolve/main/00009-1364020674.png",
+      "title": "ColoringBook.Redmond",
+      "repo": "artificialguybr/ColoringBookRedmond",
+      "trigger_word": "ColoringBookAF",
+      "weights": "ColoringBookRedmond-ColoringBookAF.safetensors",
+      "is_compatible": true
+    },
+    {
+      "image": "https://huggingface.co/Norod78/SDXL-LofiGirl-Lora/resolve/main/SDXL-LofiGirl-Lora/Examples/_00044-20230829080050-45-the%20%20girl%20with%20a%20pearl%20earring%20the%20LofiGirl%20%20_lora_SDXL-LofiGirl-Lora_1_%2C%20Very%20detailed%2C%20clean%2C%20high%20quality%2C%20sharp%20image.jpg",
+      "title": "LoFi Girl SDXL"
+      "repo": "Norod78/SDXL-LofiGirl-Lora",
+      "trigger_word": "LofiGirl",
+      "weights": "SDXL-LofiGirl-Lora.safetensors",
       "is_compatible": true
     },
     {
@@ -53,7 +69,7 @@
         "repo": "ostris/embroidery_style_lora_sdxl",
         "trigger_word": "",
         "weights": "embroidered_style_v1_sdxl.safetensors",
-        "is_compatible": false
+        "is_compatible": true
     },
     {
         "image": "images/3d_style_4.jpeg",
@@ -69,14 +85,14 @@
         "repo": "ostris/watercolor_style_lora_sdxl",
         "trigger_word": "",
         "weights": "watercolor_v1_sdxl.safetensors",
-        "is_compatible": false
+        "is_compatible": true
     },
     {
       "image": "https://huggingface.co/veryVANYA/ps1-graphics-sdxl/resolve/main/2070471.jpeg",
-      "title": "PS1 Graphics SDXL",
-      "repo":"veryVANYA/ps1-graphics-sdxl",
+      "title": "PS1 Graphics v2 SDXL",
+      "repo":"veryVANYA/ps1-graphics-sdxl-v2",
       "trigger_word": "ps1 style",
-      "weights": "ps1_style_SDXL_v1.safetensors",
+      "weights": "ps1_style_SDXL_v2.safetensors",
       "is_compatible": true
     },
     {
@@ -85,7 +101,7 @@
         "repo": "TheLastBen/William_Eggleston_Style_SDXL",
         "trigger_word": "by william eggleston",
         "weights": "wegg.safetensors",
-        "is_compatible": false
+        "is_compatible": true
     },
     {
         "image": "https://huggingface.co/davizca87/c-a-g-coinmaker/resolve/main/1722160.jpeg",
@@ -157,7 +173,7 @@
         "repo": "TheLastBen/Pikachu_SDXL",
         "trigger_word": "pikachu",
         "weights": "pikachu.safetensors",
-        "is_compatible": false
+        "is_compatible": true
     },
     {
         "image": "images/LogoRedmond-LogoLoraForSDXL.jpeg",
@@ -181,7 +197,7 @@
         "repo": "TheLastBen/Josef_Koudelka_Style_SDXL",
         "trigger_word": "by josef koudelka",
         "weights": "koud.safetensors",
-        "is_compatible": false
+        "is_compatible": true
     },
     {
       "image": "https://huggingface.co/goofyai/Leonardo_Ai_Style_Illustration/resolve/main/leo-2.png",
@@ -189,7 +205,7 @@
       "repo": "goofyai/Leonardo_Ai_Style_Illustration",
       "trigger_word": "leonardo style",
       "weights": "leonardo_illustration.safetensors",
-      "is_compatible": false
+      "is_compatible": true
     },
     {
       "image":"https://huggingface.co/Norod78/SDXL-simpstyle-Lora/resolve/main/Examples/00006-20230820150225-558-the%20girl%20with%20a%20pearl%20earring%20by%20johannes%20vermeer%20simpstyle%20_lora_SDXL-simpstyle-Lora_1_%2C%20Very%20detailed%2C%20clean%2C%20high%20quality%2C%20sh.jpg",
@@ -205,6 +221,14 @@
       "repo": "artificialguybr/StoryBookRedmond",
       "trigger_word":"KidsRedmAF",
       "weights": "StoryBookRedmond-KidsRedmAF.safetensors",
-      "is_compatible": false
+      "is_compatible": true
+    },
+    {
+      "image": "https://huggingface.co/chillpixel/blacklight-makeup-sdxl-lora/resolve/main/preview.png",
+      "title": "Blacklight Makeup",
+      "repo":"chillpixel/blacklight-makeup-sdxl-lora",
+      "trigger_word": "with blacklight makeup",
+      "weights": "pytorch_lora_weights.bin",
+      "is_compatible": true
     }
 ]
