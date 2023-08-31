@@ -54,6 +54,7 @@ def update_selection(selected_state: gr.SelectData):
     weight_name = sdxl_loras[selected_state.index]["weights"]
     updated_text = f"### Selected: [{lora_repo}](https://huggingface.co/{lora_repo}) ✨"
     is_compatible = sdxl_loras[selected_state.index]["is_compatible"]
+    is_pivotal = sdxl_loras[selected_state.index]["is_pivotal"]
     
     use_with_diffusers = f'''
     ## Using [`{lora_repo}`](https://huggingface.co/{lora_repo})
