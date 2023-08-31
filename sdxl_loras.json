@@ -95,7 +95,7 @@
       "weights": "lora.safetensors",
       "text_embedding_weights": "embeddings.pti",
       "is_compatible": false,
-      "is_pivotal": true,
+      "is_pivotal": true
     },
     {
       "image": "https://huggingface.co/veryVANYA/ps1-graphics-sdxl/resolve/main/2070471.jpeg",
