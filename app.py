@@ -25,7 +25,7 @@ with open("sdxl_loras.json", "r") as file:
         }
         for item in data
     ]
-
+print(sdxl_loras)
 saved_names = [
     hf_hub_download(item["repo"], item["weights"]) for item in sdxl_loras
 ]
