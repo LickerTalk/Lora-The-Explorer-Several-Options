@@ -3,6 +3,7 @@ import torch
 from diffusers import StableDiffusionXLPipeline, AutoencoderKL
 from huggingface_hub import hf_hub_download
 from share_btn import community_icon_html, loading_icon_html, share_js
+from cog_sdxl_dataset_and_utils import TokenEmbeddingsHandler
 import lora
 from time import sleep
 import copy
@@ -19,6 +20,8 @@ with open("sdxl_loras.json", "r") as file:
             "trigger_word": item["trigger_word"],
             "weights": item["weights"],
             "is_compatible": item["is_compatible"],
+            "is_pivotal": item.get("is_pivotal", False),
+            "text_embedding_weights": item.get("text_embedding_weights", None)
         }
         for item in data
     ]
@@ -72,9 +75,10 @@ def update_selection(selected_state: gr.SelectData):
         image = pipe(prompt, num_inference_steps=30, guidance_scale=7.5, cross_attention_kwargs={{"scale": lora_scale}}).images[0]
         image.save("image.png")
         '''
-    else:
+    elif not is_pivotal:
         use_with_diffusers += "This LoRA is not compatible with diffusers natively yet. But you can still use it on diffusers with `bmaltais/kohya_ss` LoRA class, check out this [Google Colab](https://colab.research.google.com/drive/14aEJsKdEQ9_kyfsiV6JDok799kxPul0j )"
-
+    else:
+        use_with_diffusers += f"This LoRA is not compatible with diffusers natively yet. But you can still use it on diffusers with sdxl-cog `TokenEmbeddingsHandler` class, check out the [model repo](https://huggingface.co/{lora_repo})"
     use_with_uis = f'''
     ## Use it with Comfy UI, Invoke AI, SD.Next, AUTO1111: 
 
@@ -143,13 +147,26 @@ def run_lora(prompt, negative, lora_scale, selected_state):
         else:
             pipe.unload_lora_weights()
         is_compatible = sdxl_loras[selected_state.index]["is_compatible"]
-        
         if is_compatible:
             pipe.load_lora_weights(full_path_lora)
             cross_attention_kwargs = {"scale": lora_scale}
         else:
-            merge_incompatible_lora(full_path_lora, lora_scale)
-            last_merged = True
+            is_pivotal = sdxl_loras[selected_state.index]["is_pivotal"]
+            if(is_pivotal):
+                
+                pipe.load_lora_weights(full_path_lora)
+                cross_attention_kwargs = {"scale": lora_scale}
+
+                #Add the textual inversion embeddings from pivotal tuning models
+                text_embedding_name = sdxl_loras[selected_state.index]["text_embedding_weights"]
+                text_encoders = [pipe.text_encoder, pipe.text_encoder_2]
+                tokenizers = [pipe.tokenizer, pipe.tokenizer_2]
+                embedding_path = hf_hub_download(repo_id=repo_name, filename=text_embedding_name, repo_type="model")
+                embhandler = TokenEmbeddingsHandler(text_encoders, tokenizers)
+                embhandler.load_embeddings(embedding_path)
+            else:
+                merge_incompatible_lora(full_path_lora, lora_scale)
+                last_merged = True
 
     image = pipe(
         prompt=prompt,
