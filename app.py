@@ -22,7 +22,7 @@ with open("sdxl_loras.json", "r") as file:
             "is_compatible": item["is_compatible"],
             "is_pivotal": item.get("is_pivotal", False),
             "text_embedding_weights": item.get("text_embedding_weights", None),
-            "is_nc": item.get("non_commercial", False)
+            "is_nc": item.get("is_nc", False)
         }
         for item in data
     ]
