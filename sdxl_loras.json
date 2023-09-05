@@ -11,7 +11,7 @@
       "image": "images/riding-min.jpg",
       "title": "Tintin AI",
       "repo": "Pclanglais/TintinIA",
-      "trigger word": "drawing of tintin",
+      "trigger_word": "drawing of tintin",
       "weights": "pytorch_lora_weights.safetensors",
       "is_compatible": true,
       "is_nc": true
