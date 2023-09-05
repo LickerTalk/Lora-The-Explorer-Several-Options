@@ -21,7 +21,8 @@ with open("sdxl_loras.json", "r") as file:
             "weights": item["weights"],
             "is_compatible": item["is_compatible"],
             "is_pivotal": item.get("is_pivotal", False),
-            "text_embedding_weights": item.get("text_embedding_weights", None)
+            "text_embedding_weights": item.get("text_embedding_weights", None),
+            "is_nc": item.get("non_commercial", False)
         }
         for item in data
     ]
@@ -52,7 +53,7 @@ def update_selection(selected_state: gr.SelectData):
     instance_prompt = sdxl_loras[selected_state.index]["trigger_word"]
     new_placeholder = "Type a prompt. This LoRA applies for all prompts, no need for a trigger word" if instance_prompt == "" else "Type a prompt to use your selected LoRA"
     weight_name = sdxl_loras[selected_state.index]["weights"]
-    updated_text = f"### Selected: [{lora_repo}](https://huggingface.co/{lora_repo}) ✨"
+    updated_text = f"### Selected: [{lora_repo}](https://huggingface.co/{lora_repo}) ✨ {'(non-commercial LoRA, `cc-by-nc`)' if sdxl_loras[selected_state.index]['is_nc'] else '' }"
     is_compatible = sdxl_loras[selected_state.index]["is_compatible"]
     is_pivotal = sdxl_loras[selected_state.index]["is_pivotal"]
     
