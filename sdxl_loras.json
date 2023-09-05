@@ -8,6 +8,15 @@
         "is_compatible": true
     },
     {
+      "image": "images/riding-min.jpg",
+      "title": "Tintin AI",
+      "repo": "Pclanglais/TintinIA",
+      "trigger word": "drawing of tintin",
+      "weights": "pytorch_lora_weights.safetensors",
+      "is_compatible": true,
+      "is_nc": true
+    },
+    {
         "image": "https://huggingface.co/ProomptEngineer/pe-balloon-diffusion-style/resolve/main/2095176.jpeg",
         "title": "PE Balloon Diffusion",
         "repo": "ProomptEngineer/pe-balloon-diffusion-style",
