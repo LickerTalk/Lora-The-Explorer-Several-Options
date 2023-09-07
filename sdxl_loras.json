@@ -62,7 +62,7 @@
       "image": "https://pbxt.replicate.delivery/8LKCty2D5b5BBBjylErfI8Xqf4OTSsnA0TIJccnpPct3GmeiA/out-0.png",
       "title": "2004 bad digital photography",
       "repo": "fofr/sdxl-2004",
-      "trigger_word": "in the style of <s0><s1>",
+      "trigger_word": "2004, in the style of <s0><s1>",
       "weights": "lora.safetensors",
       "text_embedding_weights": "embeddings.pti",
       "is_compatible": false,
