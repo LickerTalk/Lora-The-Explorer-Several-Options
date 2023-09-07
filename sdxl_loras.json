@@ -8,16 +8,6 @@
         "is_compatible": true
     },
     {
-      "image": "https://pbxt.replicate.delivery/8LKCty2D5b5BBBjylErfI8Xqf4OTSsnA0TIJccnpPct3GmeiA/out-0.png",
-      "title": "2004 bad digital photography",
-      "repo": "fofr/sdxl-2004",
-      "trigger_word": "in the style of <s0><s1>",
-      "weights": "lora.safetensors",
-      "text_embedding_weights": "embeddings.pti",
-      "is_compatible": false,
-      "is_pivotal": true
-    },
-    {
       "image": "images/riding-min.jpg",
       "title": "Tintin AI",
       "repo": "Pclanglais/TintinIA",
@@ -67,6 +57,16 @@
         "trigger_word": "papercut",
         "weights": "papercut.safetensors",
         "is_compatible": true
+    },
+    {
+      "image": "https://pbxt.replicate.delivery/8LKCty2D5b5BBBjylErfI8Xqf4OTSsnA0TIJccnpPct3GmeiA/out-0.png",
+      "title": "2004 bad digital photography",
+      "repo": "fofr/sdxl-2004",
+      "trigger_word": "in the style of <s0><s1>",
+      "weights": "lora.safetensors",
+      "text_embedding_weights": "embeddings.pti",
+      "is_compatible": false,
+      "is_pivotal": true
     },
     {
       "image": "https://huggingface.co/joachimsallstrom/aether-ghost-lora-for-sdxl/resolve/14de4e59a3f44dabc762855da208cb8f44a7ac78/ghost.png",
