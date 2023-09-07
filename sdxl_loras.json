@@ -16,7 +16,7 @@
       "text_embedding_weights": "embeddings.pti",
       "is_compatible": false,
       "is_pivotal": true
-    }
+    },
     {
       "image": "images/riding-min.jpg",
       "title": "Tintin AI",
