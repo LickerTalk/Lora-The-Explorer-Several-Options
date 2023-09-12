@@ -180,8 +180,9 @@ def run_lora(prompt, negative, lora_scale, selected_state, progress=gr.Progress(
                 
             else:
                 merge_incompatible_lora(full_path_lora, lora_scale)
-                last_merged = True
-                last_fused=False
+                last_fused = False
+                
+            last_merged = True
 
     image = pipe(
         prompt=prompt,
