@@ -54,7 +54,7 @@ pipe.to(device)
 
 last_lora = ""
 last_merged = False
-
+last_fused = False
 def update_selection(selected_state: gr.SelectData):
     lora_repo = sdxl_loras[selected_state.index]["repo"]
     instance_prompt = sdxl_loras[selected_state.index]["trigger_word"]
@@ -154,18 +154,20 @@ def run_lora(prompt, negative, lora_scale, selected_state, progress=gr.Progress(
             gc.collect()
             pipe = copy.deepcopy(original_pipe)
             pipe.to(device)
-        else:
+        elif(last_fused):
             pipe.unload_lora_weights()
             pipe.unfuse_lora()
         is_compatible = sdxl_loras[selected_state.index]["is_compatible"]
         if is_compatible:
             pipe.load_lora_weights(loaded_state_dict)
             pipe.fuse_lora(lora_scale)
+            last_fused = True
         else:
             is_pivotal = sdxl_loras[selected_state.index]["is_pivotal"]
             if(is_pivotal):
                 pipe.load_lora_weights(loaded_state_dict)
                 pipe.fuse_lora(lora_scale)
+                last_fused = True
                 
                 #Add the textual inversion embeddings from pivotal tuning models
                 text_embedding_name = sdxl_loras[selected_state.index]["text_embedding_weights"]
@@ -174,9 +176,11 @@ def run_lora(prompt, negative, lora_scale, selected_state, progress=gr.Progress(
                 embedding_path = hf_hub_download(repo_id=repo_name, filename=text_embedding_name, repo_type="model")
                 embhandler = TokenEmbeddingsHandler(text_encoders, tokenizers)
                 embhandler.load_embeddings(embedding_path)
+                
             else:
                 merge_incompatible_lora(full_path_lora, lora_scale)
                 last_merged = True
+                last_fused=False
 
     image = pipe(
         prompt=prompt,
