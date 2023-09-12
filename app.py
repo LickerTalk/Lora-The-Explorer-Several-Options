@@ -136,7 +136,7 @@ def merge_incompatible_lora(full_path_lora, lora_scale):
                 gc.collect()
 
 def run_lora(prompt, negative, lora_scale, selected_state, progress=gr.Progress(track_tqdm=True)):
-    global last_lora, last_merged, pipe
+    global last_lora, last_merged, last_fused, pipe
 
     if negative == "":
         negative = None
