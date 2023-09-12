@@ -1,4 +1,4 @@
-git+https://github.com/huggingface/diffusers.git@0d562a9c2f40ab4c764bd48e482cd2deb580c026
+git+https://github.com/huggingface/diffusers.git
 transformers
 safetensors
 accelerate
