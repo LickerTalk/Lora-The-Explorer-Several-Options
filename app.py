@@ -149,15 +149,14 @@ def run_lora(prompt, negative, lora_scale, selected_state, progress=gr.Progress(
     loaded_state_dict = sdxl_loras[selected_state.index]["state_dict"]
     cross_attention_kwargs = None
     if last_lora != repo_name:
-        pipe = copy.deepcopy(original_pipe)
-        pipe.to(device)
-        #if last_merged:
-        #   del pipe
-        #    gc.collect()
-        
-        #elif(last_fused):
-        #    pipe.unfuse_lora()
-        #    pipe.unload_lora_weights()
+        if last_merged:
+            del pipe
+            gc.collect()
+            pipe = copy.deepcopy(original_pipe)
+            pipe.to(device)
+        elif(last_fused):
+            pipe.unfuse_lora()
+            pipe.unload_lora_weights()
         is_compatible = sdxl_loras[selected_state.index]["is_compatible"]
         
         if is_compatible:
@@ -181,10 +180,9 @@ def run_lora(prompt, negative, lora_scale, selected_state, progress=gr.Progress(
                 
             else:
                 merge_incompatible_lora(full_path_lora, lora_scale)
-                last_fused = False
-                
+                last_fused=False
             last_merged = True
-
+            
     image = pipe(
         prompt=prompt,
         negative_prompt=negative,
