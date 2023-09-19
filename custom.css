@@ -3,7 +3,7 @@
 #title img{width: 100px; margin-right: 0.5em}
 #prompt input{width: calc(100% - 160px);border-top-right-radius: 0px;border-bottom-right-radius: 0px;}
 #run_button{position:absolute;margin-top: 11px;right: 0;margin-right: 0.8em;border-bottom-left-radius: 0px;border-top-left-radius: 0px;}
-#gallery{display:flex;max-height: 784px;}
+#gallery{display:flex;}
 #gallery .grid-wrap{min-height: 100%;}
 #accordion code{word-break: break-all;word-wrap: break-word;white-space: pre-wrap}
 #soon{opacity: 0.55; pointer-events: none}
