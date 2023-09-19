@@ -6,14 +6,13 @@ from safetensors.torch import load_file
 from share_btn import community_icon_html, loading_icon_html, share_js
 from cog_sdxl_dataset_and_utils import TokenEmbeddingsHandler
 import lora
-from time import sleep
 import copy
 import json
 import gc
-
+import random
 with open("sdxl_loras.json", "r") as file:
     data = json.load(file)
-    sdxl_loras = [
+    sdxl_loras_raw = [
         {
             "image": item["image"],
             "title": item["title"],
@@ -23,6 +22,8 @@ with open("sdxl_loras.json", "r") as file:
             "is_compatible": item["is_compatible"],
             "is_pivotal": item.get("is_pivotal", False),
             "text_embedding_weights": item.get("text_embedding_weights", None),
+            "likes": item.get("likes", 0),
+            "downloads": item.get("downloads", 0),
             "is_nc": item.get("is_nc", False)
         }
         for item in data
@@ -30,16 +31,20 @@ with open("sdxl_loras.json", "r") as file:
 
 device = "cuda" 
 
-for item in sdxl_loras:
+state_dicts = {}
+
+for item in sdxl_loras_raw:
     saved_name = hf_hub_download(item["repo"], item["weights"])
     
     if not saved_name.endswith('.safetensors'):
         state_dict = torch.load(saved_name)
     else:
         state_dict = load_file(saved_name)
-        
-    item["saved_name"] = saved_name
-    item["state_dict"] = state_dict #{k: v.to(device=device, dtype=torch.float16) for k, v in state_dict.items() if torch.is_tensor(v)}
+    
+    state_dicts[item["repo"]] = {
+        "saved_name": saved_name,
+        "state_dict": state_dict
+    }
 
 vae = AutoencoderKL.from_pretrained(
     "madebyollin/sdxl-vae-fp16-fix", torch_dtype=torch.float16
@@ -55,7 +60,7 @@ pipe.to(device)
 last_lora = ""
 last_merged = False
 last_fused = False
-def update_selection(selected_state: gr.SelectData):
+def update_selection(selected_state: gr.SelectData, sdxl_loras):
     lora_repo = sdxl_loras[selected_state.index]["repo"]
     instance_prompt = sdxl_loras[selected_state.index]["trigger_word"]
     new_placeholder = "Type a prompt. This LoRA applies for all prompts, no need for a trigger word" if instance_prompt == "" else "Type a prompt to use your selected LoRA"
@@ -135,7 +140,7 @@ def merge_incompatible_lora(full_path_lora, lora_scale):
                 del lora_model
                 gc.collect()
 
-def run_lora(prompt, negative, lora_scale, selected_state, progress=gr.Progress(track_tqdm=True)):
+def run_lora(prompt, negative, lora_scale, selected_state, sdxl_loras, progress=gr.Progress(track_tqdm=True)):
     global last_lora, last_merged, last_fused, pipe
 
     if negative == "":
@@ -145,8 +150,9 @@ def run_lora(prompt, negative, lora_scale, selected_state, progress=gr.Progress(
         raise gr.Error("You must select a LoRA")
     repo_name = sdxl_loras[selected_state.index]["repo"]
     weight_name = sdxl_loras[selected_state.index]["weights"]
-    full_path_lora = sdxl_loras[selected_state.index]["saved_name"]
-    loaded_state_dict = sdxl_loras[selected_state.index]["state_dict"]
+    
+    full_path_lora = state_dicts[repo_name]["saved_name"]
+    loaded_state_dict = state_dicts[repo_name]["state_dict"]
     cross_attention_kwargs = None
     if last_lora != repo_name:
         if last_merged:
@@ -186,8 +192,8 @@ def run_lora(prompt, negative, lora_scale, selected_state, progress=gr.Progress(
     image = pipe(
         prompt=prompt,
         negative_prompt=negative,
-        width=768,
-        height=768,
+        width=1024,
+        height=1024,
         num_inference_steps=20,
         guidance_scale=7.5,
     ).images[0]
@@ -195,22 +201,36 @@ def run_lora(prompt, negative, lora_scale, selected_state, progress=gr.Progress(
     gc.collect()
     return image, gr.update(visible=True)
 
+def shuffle_gallery(sdxl_loras):
+    random.shuffle(sdxl_loras)
+    return [(item["image"], item["title"]) for item in sdxl_loras], sdxl_loras
+
+def swap_gallery(order, sdxl_loras):
+    if(order == "random"):
+        return shuffle_gallery(sdxl_loras)
+    else:
+        sorted_gallery = sorted(sdxl_loras, key=lambda x: x.get(order, 0), reverse=True)
+        return [(item["image"], item["title"]) for item in sorted_gallery], sorted_gallery
+
 
 with gr.Blocks(css="custom.css") as demo:
+    gr_sdxl_loras = gr.State(value=sdxl_loras_raw)
     title = gr.HTML(
         """<h1><img src="https://i.imgur.com/vT48NAO.png" alt="LoRA"> LoRA the Explorer</h1>""",
         elem_id="title",
     )
     selected_state = gr.State()
     with gr.Row():
-        gallery = gr.Gallery(
-            value=[(item["image"], item["title"]) for item in sdxl_loras],
-            label="SDXL LoRA Gallery",
-            allow_preview=False,
-            columns=3,
-            elem_id="gallery",
-            show_share_button=False
-        )
+        with gr.Box(elem_id="gallery_box"):
+            order_gallery = gr.Radio(choices=["random", "likes"], value="random", label="Order by", elem_id="order_radio")
+            gallery = gr.Gallery(
+                #value=[(item["image"], item["title"]) for item in sdxl_loras],
+                label="SDXL LoRA Gallery",
+                allow_preview=False,
+                columns=3,
+                elem_id="gallery",
+                show_share_button=False
+            )
         with gr.Column():
             prompt_title = gr.Markdown(
                 value="### Click on a LoRA in the gallery to select it",
@@ -268,12 +288,18 @@ with gr.Blocks(css="custom.css") as demo:
                 submit_disclaimer = gr.Markdown(
                     "This is a curated gallery by me, [apolinário (multimodal.art)](https://twitter.com/multimodalart). I'll try to include as many cool LoRAs as they are submitted! You can [duplicate this Space](https://huggingface.co/spaces/multimodalart/LoraTheExplorer?duplicate=true) to use it privately, and add your own LoRAs by editing `sdxl_loras.json` in the Files tab of your private space."
                 )
-
+    order_gallery.change(
+        fn=swap_gallery,
+        inputs=[order_gallery, gr_sdxl_loras],
+        outputs=[gallery, gr_sdxl_loras],
+        queue=False
+    )
     gallery.select(
-        update_selection,
+        fn=update_selection,
+        inputs=[gr_sdxl_loras],
         outputs=[prompt_title, prompt, prompt, selected_state, use_diffusers, use_uis],
         queue=False,
-        show_progress=False,
+        show_progress=False
     )
     prompt.submit(
         fn=check_selected,
@@ -282,7 +308,7 @@ with gr.Blocks(css="custom.css") as demo:
         show_progress=False
     ).success(
         fn=run_lora,
-        inputs=[prompt, negative, weight, selected_state],
+        inputs=[prompt, negative, weight, selected_state, gr_sdxl_loras],
         outputs=[result, share_group],
     )
     button.click(
@@ -292,10 +318,10 @@ with gr.Blocks(css="custom.css") as demo:
         show_progress=False
     ).success(
         fn=run_lora,
-        inputs=[prompt, negative, weight, selected_state],
+        inputs=[prompt, negative, weight, selected_state, gr_sdxl_loras],
         outputs=[result, share_group],
     )
     share_button.click(None, [], [], _js=share_js)
-
+    demo.load(fn=shuffle_gallery, inputs=[gr_sdxl_loras], outputs=[gallery, gr_sdxl_loras], queue=False)
 demo.queue(max_size=20)
 demo.launch()
