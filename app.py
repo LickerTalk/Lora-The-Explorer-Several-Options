@@ -321,4 +321,4 @@ with gr.Blocks(css="custom.css") as demo:
     share_button.click(None, [], [], _js=share_js)
     demo.load(fn=shuffle_gallery, inputs=[gr_sdxl_loras], outputs=[gallery, gr_sdxl_loras], queue=False)
 demo.queue(max_size=20)
-demo.launch(share=True)
+demo.launch()
