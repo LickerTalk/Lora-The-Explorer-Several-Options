@@ -663,5 +663,17 @@
         "is_compatible": true,
         "image": "https://huggingface.co/artificialguybr/ClayAnimationRedmond/resolve/main/00138-3585231804.png",
         "weights": "ClayAnimationRedm.safetensors"
+    },
+    {
+      "repo": "fofr/sdxl-vision-pro",
+      "title": "SDXL Vision Pro",
+      "trigger_word": "<s0><s1> VR headset",
+      "weights": "lora.safetensors",
+      "text_embedding_weights": "embeddings.pti",
+      "is_compatible": false,
+      "is_pivotal": true,
+      "likes": 1,
+      "downloads": 0
+    },
     }
 ]
