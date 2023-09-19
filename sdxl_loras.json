@@ -665,6 +665,7 @@
         "weights": "ClayAnimationRedm.safetensors"
     },
     {
+      "image":"https://replicate.delivery/pbxt/aVhJriYftYQCFCd81DrvNGktIcOlJrb3fifcOTQ3yI7LZWxiA/out-0.png",
       "repo": "fofr/sdxl-vision-pro",
       "title": "SDXL Vision Pro",
       "trigger_word": "<s0><s1> VR headset",
