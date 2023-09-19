@@ -95,16 +95,6 @@
         "downloads": 0
     },
     {
-        "image": "https://i.imgur.com/Su4bFgm.png",
-        "title": "Vulcan SDXL",
-        "repo": "davizca87/vulcan",
-        "trigger_word": "v5lcn",
-        "weights": "v5lcnXL-000004.safetensors",
-        "is_compatible": true,
-        "likes": 3,
-        "downloads": 0
-    },
-    {
         "image": "https://huggingface.co/artificialguybr/ColoringBookRedmond/resolve/main/00009-1364020674.png",
         "title": "ColoringBook.Redmond",
         "repo": "artificialguybr/ColoringBookRedmond",
@@ -577,7 +567,7 @@
     {
         "repo": "CiroN2022/road-sign",
         "title": "road-sign",
-        "trigger_word": null,
+        "trigger_word": "road sign",
         "is_compatible": true,
         "image": "https://huggingface.co/CiroN2022/road-sign/resolve/main/2338481.jpeg",
         "weights": "road_sign.safetensors",
@@ -585,39 +575,9 @@
         "downloads": 0
     },
     {
-        "repo": "CiroN2022/mind-warp",
-        "title": "mind-warp",
-        "trigger_word": null,
-        "is_compatible": true,
-        "image": "https://huggingface.co/CiroN2022/mind-warp/resolve/main/2308272.jpeg",
-        "weights": "MindWarp.safetensors",
-        "likes": 0,
-        "downloads": 0
-    },
-    {
-        "repo": "CiroN2022/shoes",
-        "title": "shoes",
-        "trigger_word": null,
-        "is_compatible": true,
-        "image": "https://huggingface.co/CiroN2022/shoes/resolve/main/2235317.jpeg",
-        "weights": "shoes.safetensors",
-        "likes": 0,
-        "downloads": 0
-    },
-    {
-        "repo": "CiroN2022/chroma-essence",
-        "title": "chroma-essence",
-        "trigger_word": null,
-        "is_compatible": true,
-        "image": "https://huggingface.co/CiroN2022/chroma-essence/resolve/main/2216619.jpeg",
-        "weights": "Chroma_Essence.safetensors",
-        "likes": 3,
-        "downloads": 0
-    },
-    {
         "repo": "CiroN2022/mosaic-style",
         "title": "mosaic-style",
-        "trigger_word": null,
+        "trigger_word": "mosaic",
         "is_compatible": true,
         "image": "https://huggingface.co/CiroN2022/mosaic-style/resolve/main/2216189.jpeg",
         "weights": "mosaic.safetensors",
@@ -627,7 +587,7 @@
     {
         "repo": "CiroN2022/cd-md-music",
         "title": "cd-md-music",
-        "trigger_word": null,
+        "trigger_word": "product photo cd",
         "is_compatible": true,
         "image": "https://huggingface.co/CiroN2022/cd-md-music/resolve/main/2183289.jpeg",
         "weights": "cd_music.safetensors",
@@ -637,7 +597,7 @@
     {
         "repo": "CiroN2022/hair-style",
         "title": "hair-style",
-        "trigger_word": null,
+        "trigger_word": "crazy alternate hairstyle",
         "is_compatible": true,
         "image": "https://huggingface.co/CiroN2022/hair-style/resolve/main/2193812.jpeg",
         "weights": "hair_style.safetensors",
@@ -675,26 +635,6 @@
         "downloads": 0
     },
     {
-        "repo": "CiroN2022/cyberpunk-anime-style",
-        "title": "cyberpunk-anime-style",
-        "trigger_word": null,
-        "is_compatible": true,
-        "image": "https://huggingface.co/CiroN2022/cyberpunk-anime-style/resolve/main/2039030.jpeg",
-        "weights": "Cyberpunk _Anime_sdxl.safetensors",
-        "likes": 1,
-        "downloads": 0
-    },
-    {
-        "repo": "CiroN2022/skeleton-toy",
-        "title": "skeleton-toy",
-        "trigger_word": null,
-        "is_compatible": true,
-        "image": "https://huggingface.co/CiroN2022/skeleton-toy/resolve/main/2000436.jpeg",
-        "weights": "skeleton_toy_sdxl.safetensors",
-        "likes": 1,
-        "downloads": 0
-    },
-    {
         "repo": "artificialguybr/PixelArtRedmond",
         "title": "PixelArtRedmond",
         "trigger_word": "Pixel Art, PixArFK",
@@ -707,7 +647,7 @@
     {
         "repo": "artificialguybr/StickersRedmond",
         "title": "StickersRedmond",
-        "trigger_word": "Stickers, sticker",
+        "trigger_word": "Stickers",
         "likes": 2,
         "downloads": 0,
         "is_compatible": true,
@@ -715,19 +655,9 @@
         "weights": "StickersRedmond.safetensors"
     },
     {
-        "repo": "artificialguybr/PixelArtRedmond",
-        "title": "PixelArtRedmond",
-        "trigger_word": "Pixel Art, PixArFK",
-        "likes": 1,
-        "downloads": 0,
-        "is_compatible": true,
-        "image": "https://huggingface.co/artificialguybr/PixelArtRedmond/resolve/main/pixel-0017-714031916.png",
-        "weights": "PixelArtRedmond-Lite64.safetensors"
-    },
-    {
         "repo": "artificialguybr/ClayAnimationRedmond",
         "title": "ClayAnimationRedmond",
-        "trigger_word": "Clay Animation, Clay",
+        "trigger_word": "Clay Animation",
         "likes": 5,
         "downloads": 0,
         "is_compatible": true,
