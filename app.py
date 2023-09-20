@@ -250,7 +250,7 @@ with gr.Blocks(css="custom.css") as demo:
             )
             with gr.Accordion("Advanced options", open=False):
                 negative = gr.Textbox(label="Negative Prompt")
-                weight = gr.Slider(0, 10, value=1, step=0.1, label="LoRA weight")
+                weight = gr.Slider(0, 10, value=0.8, step=0.1, label="LoRA weight")
 
     with gr.Column(elem_id="extra_info"):
         with gr.Accordion(
