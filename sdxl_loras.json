@@ -675,5 +675,23 @@
       "is_pivotal": true,
       "likes": 1,
       "downloads": 0
+    },
+    {
+      "image": "https://huggingface.co/joachimsallstrom/aether-glitch-lora-for-sdxl/resolve/main/2680627.jpeg",
+      "repo": "joachimsallstrom/aether-glitch-lora-for-sdxl",
+      "title": "Aether VHS Glitch",
+      "trigger_word": "vhs glitch",
+      "weights": "Aether_Glitch_v1_LoRA.safetensors",
+      "is_compatible": true,
+      "likes": 1
+    },
+    {
+      "image": "https://huggingface.co/artificialguybr/TshirtDesignRedmond/resolve/main/00097-1339429505.png",
+      "repo": "artificialguybr/TshirtDesignRedmond",
+      "title": "T-Shirt.Design.Redmond",
+      "trigger_word":"TshirtDesignAF",
+      "weights": "TshirtDesignRedmond-TshirtDesignAF.safetensors",
+      "is_compatible": true,
+      "likes": 4
     }
 ]
