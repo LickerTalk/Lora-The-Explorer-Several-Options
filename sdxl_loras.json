@@ -698,7 +698,7 @@
       "image": "https://huggingface.co/ostris/ikea-instructions-lora-sdxl/resolve/main/2709929.jpeg",
       "repo": "ostris/ikea-instructions-lora-sdxl",
       "title": "IKEA Instructions",
-      "triger_word": "",
+      "trigger_word": "",
       "weights": "ikea_instructions_xl_v1_5.safetensors",
       "is_compatible": true,
       "likes": 5
