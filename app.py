@@ -196,7 +196,7 @@ def run_lora(prompt, negative, lora_scale, selected_state, sdxl_loras, progress=
         width=1024,
         height=1024,
         num_inference_steps=20,
-        cross_attention_kwargs = {"scale" : lora_scale}
+        cross_attention_kwargs = {"scale" : lora_scale},
         guidance_scale=7.5,
     ).images[0]
     last_lora = repo_name
