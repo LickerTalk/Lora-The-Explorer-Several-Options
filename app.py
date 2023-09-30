@@ -154,6 +154,8 @@ def run_lora(prompt, negative, lora_scale, selected_state, sdxl_loras, progress=
     full_path_lora = state_dicts[repo_name]["saved_name"]
     loaded_state_dict = state_dicts[repo_name]["state_dict"]
     cross_attention_kwargs = None
+    print("Last LoRA:", last_lora, "Was it last merged? ", last_merged, "Was it last fused?", last_fused)
+    print("Current LoRA: ", repo_name)
     if last_lora != repo_name:
         if last_merged:
             del pipe
@@ -183,7 +185,6 @@ def run_lora(prompt, negative, lora_scale, selected_state, sdxl_loras, progress=
                 embedding_path = hf_hub_download(repo_id=repo_name, filename=text_embedding_name, repo_type="model")
                 embhandler = TokenEmbeddingsHandler(text_encoders, tokenizers)
                 embhandler.load_embeddings(embedding_path)
-                
             else:
                 merge_incompatible_lora(full_path_lora, lora_scale)
                 last_fused=False
