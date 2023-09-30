@@ -152,7 +152,7 @@ def run_lora(prompt, negative, lora_scale, selected_state, sdxl_loras, progress=
     weight_name = sdxl_loras[selected_state.index]["weights"]
     
     full_path_lora = state_dicts[repo_name]["saved_name"]
-    loaded_state_dict = state_dicts[repo_name]["state_dict"]
+    loaded_state_dict = copy.deepcopy(state_dicts[repo_name]["state_dict"])
     cross_attention_kwargs = None
     if last_lora != repo_name:
         if last_merged:
