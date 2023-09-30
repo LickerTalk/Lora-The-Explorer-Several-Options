@@ -701,6 +701,6 @@
       "trigger_word": "",
       "weights": "ikea_instructions_xl_v1_5.safetensors",
       "is_compatible": true,
-      "likes": 5
+      "likes": 22
     }
 ]
