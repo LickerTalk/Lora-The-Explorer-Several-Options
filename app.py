@@ -163,19 +163,19 @@ def run_lora(prompt, negative, lora_scale, selected_state, sdxl_loras, progress=
             pipe = copy.deepcopy(original_pipe)
             pipe.to(device)
         elif(last_fused):
-            pipe.unfuse_lora()
+            #pipe.unfuse_lora()
             pipe.unload_lora_weights()
         is_compatible = sdxl_loras[selected_state.index]["is_compatible"]
         
         if is_compatible:
             pipe.load_lora_weights(loaded_state_dict)
-            pipe.fuse_lora(lora_scale)
+            #pipe.fuse_lora(lora_scale)
             last_fused = True
         else:
             is_pivotal = sdxl_loras[selected_state.index]["is_pivotal"]
             if(is_pivotal):
                 pipe.load_lora_weights(loaded_state_dict)
-                pipe.fuse_lora(lora_scale)
+                #pipe.fuse_lora(lora_scale)
                 last_fused = True
                 
                 #Add the textual inversion embeddings from pivotal tuning models
@@ -196,6 +196,7 @@ def run_lora(prompt, negative, lora_scale, selected_state, sdxl_loras, progress=
         width=1024,
         height=1024,
         num_inference_steps=20,
+        cross_attention_kwargs = {"scale" : lora_scale}
         guidance_scale=7.5,
     ).images[0]
     last_lora = repo_name
