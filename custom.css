@@ -24,8 +24,9 @@ div#share-btn-container > div {flex-direction: row;background: black;align-items
 #order_radio .form{border:0 !important; padding-bottom: 0.25em}
 #order_radio [data-testid="block-info"]{float: left;margin-top: 2px;margin-right: 6px}
 #order_radio label{padding: 0.25em 0.75em !important;font-size: 85% !important}
-@media (max-width: 527px) {
+@media (max-width: 600px) {
   #title h1{font-size: 2.2em}
   #title img{width: 80px;}
   #gallery {max-height: 370px}
+  #main_app{flex-direction: column}
 }
