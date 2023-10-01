@@ -220,7 +220,7 @@ with gr.Blocks(css="custom.css") as demo:
         elem_id="title",
     )
     selected_state = gr.State()
-    with gr.Row():
+    with gr.Row(elem_id="main_app"):
         with gr.Box(elem_id="gallery_box"):
             order_gallery = gr.Radio(choices=["random", "likes"], value="random", label="Order by", elem_id="order_radio")
             gallery = gr.Gallery(
