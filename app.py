@@ -76,6 +76,7 @@ def update_selection(selected_state: gr.SelectData, sdxl_loras):
     '''
     if is_compatible:
         use_with_diffusers += f'''
+        ```py
         from diffusers import StableDiffusionXLPipeline
         import torch
     
@@ -88,6 +89,7 @@ def update_selection(selected_state: gr.SelectData, sdxl_loras):
         lora_scale= 0.9
         image = pipe(prompt, num_inference_steps=30, guidance_scale=7.5, cross_attention_kwargs={{"scale": lora_scale}}).images[0]
         image.save("image.png")
+        ```
         '''
     elif not is_pivotal:
         use_with_diffusers += "This LoRA is not compatible with diffusers natively yet. But you can still use it on diffusers with `bmaltais/kohya_ss` LoRA class, check out this [Google Colab](https://colab.research.google.com/drive/14aEJsKdEQ9_kyfsiV6JDok799kxPul0j )"
