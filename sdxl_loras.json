@@ -718,6 +718,7 @@
       "title": "Isometric Geology",
       "trigger_word": "in the style of <s0><s1>",
       "weights": "lora.safetensors",
+      "text_embedding_weights": "embeddings.pti",
       "is_compatible": false,
       "is_pivotal": true,
       "likes": 1
