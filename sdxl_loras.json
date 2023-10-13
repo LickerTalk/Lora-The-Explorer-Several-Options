@@ -95,13 +95,13 @@
         "downloads": 0
     },
     {
-        "image": "https://huggingface.co/artificialguybr/ColoringBookRedmond/resolve/main/00009-1364020674.png",
-        "title": "ColoringBook.Redmond",
-        "repo": "artificialguybr/ColoringBookRedmond",
+        "image": "https://huggingface.co/artificialguybr/ColoringBookRedmond-V2/resolve/main/00493-1759595235.png",
+        "title": "ColoringBook.Redmond V2",
+        "repo": "artificialguybr/ColoringBookRedmond-V2",
         "trigger_word": "ColoringBookAF",
-        "weights": "ColoringBookRedmond-ColoringBookAF.safetensors",
+        "weights": "ColoringBookRedmond-ColoringBook-ColoringBookAF.safetensors",
         "is_compatible": true,
-        "likes": 7,
+        "likes": 2,
         "downloads": 0
     },
     {
@@ -687,10 +687,10 @@
     },
     {
       "image": "https://huggingface.co/artificialguybr/TshirtDesignRedmond/resolve/main/00097-1339429505.png",
-      "repo": "artificialguybr/TshirtDesignRedmond",
-      "title": "T-Shirt.Design.Redmond",
+      "repo": "artificialguybr/TshirtDesignRedmond-V2",
+      "title": "T-Shirt.Design.Redmond V2",
       "trigger_word":"TshirtDesignAF",
-      "weights": "TshirtDesignRedmond-TshirtDesignAF.safetensors",
+      "weights": "TShirtDesignRedmondV2-Tshirtdesign-TshirtDesignAF.safetensors",
       "is_compatible": true,
       "likes": 4
     },
@@ -701,6 +701,35 @@
       "trigger_word": "",
       "weights": "ikea_instructions_xl_v1_5.safetensors",
       "is_compatible": true,
-      "likes": 22
+      "likes": 106
+    },
+    {
+      "image": "https://huggingface.co/ostris/super-cereal-sdxl-lora/resolve/main/2879386.jpeg",
+      "repo": "ostris/super-cereal-sdxl-lora",
+      "title": "Super Cereal",
+      "trigger_word": "",
+      "weights": "cereal_box_sdxl_v1.safetensors",
+      "is_compatible": true,
+      "likes": 5,
+    },
+    {
+      "image": "https://huggingface.co/ostris/super-cereal-sdxl-lora/resolve/main/2879386.jpeg",
+      "repo": "jakedahn/sdxl-isometric-geology",
+      "title": "Isometric Geology",
+      "trigger_word": "in the style of <s0><s1>",
+      "weights": "lora.safetensors",
+      "is_compatible": false,
+      "is_pivotal": true,
+      "likes": 1,      
+    },
+    {
+      "image": "https://huggingface.co/artificialguybr/analogredmond-v2/resolve/main/00279-913323466.png",
+      "repo": "artificialguybr/analogredmond-v2",
+      "title":"Analog Photography.Redmond",
+      "trigger_word": "AnalogRedmAF",
+      "weights": "AnalogRedmondV2-Analog-AnalogRedmAF.safetensors",
+      "is_compatible": true,
+      "likes": 3
     }
+    
 ]
