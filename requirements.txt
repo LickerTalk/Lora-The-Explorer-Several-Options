@@ -3,3 +3,4 @@ https://gradio-builds.s3.amazonaws.com/4e55341d923bdbaf77f2f3484b11034d8f9b167f/
 transformers
 safetensors
 accelerate
+torch
