@@ -689,7 +689,7 @@
       "image": "https://huggingface.co/artificialguybr/TshirtDesignRedmond/resolve/main/00097-1339429505.png",
       "repo": "artificialguybr/TshirtDesignRedmond-V2",
       "title": "T-Shirt.Design.Redmond V2",
-      "trigger_word":"TshirtDesignAF",
+      "trigger_word": "TshirtDesignAF",
       "weights": "TShirtDesignRedmondV2-Tshirtdesign-TshirtDesignAF.safetensors",
       "is_compatible": true,
       "likes": 4
@@ -710,7 +710,7 @@
       "trigger_word": "",
       "weights": "cereal_box_sdxl_v1.safetensors",
       "is_compatible": true,
-      "likes": 5,
+      "likes": 5
     },
     {
       "image": "https://huggingface.co/ostris/super-cereal-sdxl-lora/resolve/main/2879386.jpeg",
@@ -720,7 +720,7 @@
       "weights": "lora.safetensors",
       "is_compatible": false,
       "is_pivotal": true,
-      "likes": 1,      
+      "likes": 1
     },
     {
       "image": "https://huggingface.co/artificialguybr/analogredmond-v2/resolve/main/00279-913323466.png",
