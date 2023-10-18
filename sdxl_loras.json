@@ -737,7 +737,7 @@
       "repo":"stets/nintendo64_cartridge",
       "title": "Nintendo 64 Cartridge",
       "weights": "n64-000001.safetensors",
-      "trigger_word": "cartridge, grey, no humans, english text, solo",
+      "trigger_word": "n64",
       "is_compatible": true,
       "likes": 6
     }
