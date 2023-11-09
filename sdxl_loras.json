@@ -559,7 +559,7 @@
         "title": "SDXL-VintageMagStyle-Lora",
         "trigger_word": "VintageMagStyle",
         "is_compatible": true,
-        "image": "https://huggingface.co/Norod78/SDXL-VintageMagStyle-Lora/resolve/main/Examples/00015-20230906102032-7778-Wonderwoman VintageMagStyle   _lora_SDXL-VintageMagStyle-Lora_1_, Very detailed, clean, high quality, sharp image.jpg",
+        "image": "https://huggingface.co/Norod78/SDXL-VintageMagStyle-Lora/resolve/main/Examples/00015-20230906102032-7778-Wonderwoman%20VintageMagStyle%20%20%20_lora_SDXL-VintageMagStyle-Lora_1_,%20Very%20detailed,%20clean,%20high%20quality,%20sharp%20image.jpg",
         "weights": "SDXL-VintageMagStyle-Lora.safetensors",
         "likes": 7,
         "downloads": 0
@@ -721,7 +721,8 @@
       "text_embedding_weights": "embeddings.pti",
       "is_compatible": false,
       "is_pivotal": true,
-      "likes": 1
+      "likes": 1,
+      "new": true
     },
     {
       "image": "https://huggingface.co/artificialguybr/analogredmond-v2/resolve/main/00279-913323466.png",
@@ -730,7 +731,8 @@
       "trigger_word": "AnalogRedmAF",
       "weights": "AnalogRedmondV2-Analog-AnalogRedmAF.safetensors",
       "is_compatible": true,
-      "likes": 3
+      "likes": 3, 
+      "new": true
     },
     {
       "image": "https://huggingface.co/stets/nintendo64_cartridge/resolve/main/00002-%5Bnumber%5D-840302403-_%20_lora_n64-000002_1_%20n64%20game%2C%20cartridge%2C%20titled%2C%20chicken%20riding%20a%20bicycle.png",
@@ -739,7 +741,8 @@
       "weights": "n64-000001.safetensors",
       "trigger_word": "n64",
       "is_compatible": true,
-      "likes": 6
+      "likes": 6,
+      "new": true
     }
     
 ]
