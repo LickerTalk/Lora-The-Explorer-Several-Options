@@ -721,8 +721,7 @@
       "text_embedding_weights": "embeddings.pti",
       "is_compatible": false,
       "is_pivotal": true,
-      "likes": 1,
-      "new": true
+      "likes": 1
     },
     {
       "image": "https://huggingface.co/artificialguybr/analogredmond-v2/resolve/main/00279-913323466.png",
@@ -731,8 +730,7 @@
       "trigger_word": "AnalogRedmAF",
       "weights": "AnalogRedmondV2-Analog-AnalogRedmAF.safetensors",
       "is_compatible": true,
-      "likes": 3, 
-      "new": true
+      "likes": 3,
     },
     {
       "image": "https://huggingface.co/stets/nintendo64_cartridge/resolve/main/00002-%5Bnumber%5D-840302403-_%20_lora_n64-000002_1_%20n64%20game%2C%20cartridge%2C%20titled%2C%20chicken%20riding%20a%20bicycle.png",
@@ -741,7 +739,36 @@
       "weights": "n64-000001.safetensors",
       "trigger_word": "n64",
       "is_compatible": true,
-      "likes": 6,
+      "likes": 6
+    },
+    {
+      "image": "https://huggingface.co/joachimsallstrom/aether-bubbles-foam-lora-for-sdxl/resolve/main/3056728.jpeg",
+      "repo": "joachimsallstrom/aether-bubbles-foam-lora-for-sdxl",
+      "title": "Aether Bubbles & Foam",
+      "weights": "Aether_Bubbles_And_Foam_v1_SDXL_LoRA.safetensors",
+      "trigger_word": "made of bath foam and soap bubbles",
+      "is_compatible": true,
+      "likes": 2,
+      "new": true
+    },
+    {
+      "image": "https://huggingface.co/artificialguybr/3DRedmond-V1/resolve/main/images/00064-2498532539.png",
+      "repo":"artificialguybr/3DRedmond-V1"
+      "title": "3D.Redmond",
+      "weights": "3DRedmond-3DRenderStyle-3DRenderAF.safetensors",
+      "trigger_word": "3D Render Style, 3DRenderAF",
+      "is_compatible": true,
+      "likes": 5,
+      "new": true
+    },
+    {
+      "image": "https://i.imgur.com/cAx2FL1.jpg",
+      "repo": "CiroN2022/tape-people",
+      "title": "Covered in Tape",
+      "weights": "Tape_people.safetensors",
+      "trigger_word": "covered of tape, caution tape, keep out",
+      "is_compatible": true,
+      "likes": 2,
       "new": true
     }
     
