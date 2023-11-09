@@ -730,7 +730,7 @@
       "trigger_word": "AnalogRedmAF",
       "weights": "AnalogRedmondV2-Analog-AnalogRedmAF.safetensors",
       "is_compatible": true,
-      "likes": 3,
+      "likes": 3
     },
     {
       "image": "https://huggingface.co/stets/nintendo64_cartridge/resolve/main/00002-%5Bnumber%5D-840302403-_%20_lora_n64-000002_1_%20n64%20game%2C%20cartridge%2C%20titled%2C%20chicken%20riding%20a%20bicycle.png",
