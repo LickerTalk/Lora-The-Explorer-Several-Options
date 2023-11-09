@@ -4,4 +4,3 @@ git+https://github.com/huggingface/diffusers.git@edea577
 transformers
 safetensors
 accelerate
-peft
