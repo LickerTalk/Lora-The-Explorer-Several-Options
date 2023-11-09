@@ -753,7 +753,7 @@
     },
     {
       "image": "https://huggingface.co/artificialguybr/3DRedmond-V1/resolve/main/images/00064-2498532539.png",
-      "repo":"artificialguybr/3DRedmond-V1"
+      "repo":"artificialguybr/3DRedmond-V1",
       "title": "3D.Redmond",
       "weights": "3DRedmond-3DRenderStyle-3DRenderAF.safetensors",
       "trigger_word": "3D Render Style, 3DRenderAF",
