@@ -1,6 +1,6 @@
+--extra-index-url https://download.pytorch.org/whl/cu118
+torch
 git+https://github.com/huggingface/diffusers.git@edea577
-https://gradio-builds.s3.amazonaws.com/4e55341d923bdbaf77f2f3484b11034d8f9b167f/gradio-3.44.0-py3-none-any.whl
 transformers
 safetensors
 accelerate
-torch
