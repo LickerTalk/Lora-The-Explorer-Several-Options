@@ -3,7 +3,7 @@
 #title img{width: 100px; margin-right: 0.5em}
 #prompt input{width: calc(100% - 160px);border-top-right-radius: 0px;border-bottom-right-radius: 0px;}
 #run_button{position:absolute;margin-top: 11px;right: 0;margin-right: 0.8em;border-bottom-left-radius: 0px;border-top-left-radius: 0px;}
-#gallery{display:flex;}
+#gallery{display:flex; border-top-left-radius: 0; border-top-right-radius: 0; border-top-color: transparent}
 #gallery .grid-wrap{min-height: 100%;}
 #accordion code{word-break: break-all;word-wrap: break-word;white-space: pre-wrap}
 #soon{opacity: 0.55; pointer-events: none}
@@ -20,11 +20,15 @@ div#share-btn-container > div {flex-direction: row;background: black;align-items
 .pending .min {min-height: auto}
 #gallery_box{padding-top: 0}
 #gallery_box .form{border: 0 !important}
-#order_radio{border: 0;padding-left: 0}
+#order_radio{border: 0;padding: 0.5em;}
 #order_radio .form{border:0 !important; padding-bottom: 0.25em}
-#order_radio [data-testid="block-info"]{float: left;margin-top: 2px;margin-right: 6px}
+#order_radio [data-testid="block-info"]{float: left;margin-top: 2px;margin-right: 6px; margin-bottom: 0}
 #order_radio label{padding: 0.25em 0.75em !important;font-size: 85% !important}
-@media (max-width: 600px) {
+#gallery_new{border-bottom-left-radius: 0; border-bottom-right-radius:0; border-bottom-color: transparent; height: 160px}
+@media(max-width: 1280px){
+    #gallery_new{height: 210px}
+}    
+@media (max-width: 700px) {
   #title h1{font-size: 2.2em}
   #title img{width: 80px;}
   #gallery {max-height: 370px}
