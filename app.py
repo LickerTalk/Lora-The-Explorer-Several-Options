@@ -236,8 +236,8 @@ with gr.Blocks(css="custom.css") as demo:
     selected_state = gr.State()
     with gr.Row(elem_id="main_app"):
         with gr.Group(elem_id="gallery_box"):
-            order_gallery = gr.Radio(choices=["random", "likes"], value="random", label="Order by", elem_id="order_radio")
             selected_loras = gr.Gallery(label="Selected LoRAs", height=80, show_share_button=False, visible=False, elem_id="gallery_selected", )
+            order_gallery = gr.Radio(choices=["random", "likes"], value="random", label="Order by", elem_id="order_radio")
             new_gallery = gr.Gallery(label="New LoRAs", elem_id="gallery_new", columns=3, value=[(item["image"], item["title"]) for item in sdxl_loras_raw_new], allow_preview=False, show_share_button=False)
             gallery = gr.Gallery(
                 #value=[(item["image"], item["title"]) for item in sdxl_loras],
