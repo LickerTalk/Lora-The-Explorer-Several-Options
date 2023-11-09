@@ -52,6 +52,7 @@ sdxl_loras_raw_new = [item for item in sdxl_loras_raw if item.get("new") == True
 
 sdxl_loras_raw = [item for item in sdxl_loras_raw if item.get("new") != True]
     
+lcm_lora_id = "lcm-sd/lcm-sdxl-base-1.0-lora"
 
 vae = AutoencoderKL.from_pretrained(
     "madebyollin/sdxl-vae-fp16-fix", torch_dtype=torch.float16
@@ -184,39 +185,20 @@ def run_lora(prompt, negative, lora_scale, selected_state, sdxl_loras, sdxl_lora
     loaded_state_dict = copy.deepcopy(state_dicts[repo_name]["state_dict"])
     cross_attention_kwargs = None
     if last_lora != repo_name:
-        if last_merged:
-            del pipe
-            gc.collect()
-            pipe = copy.deepcopy(original_pipe)
-            pipe.to(device)
-        elif(last_fused):
+        if(last_fused):
             pipe.unfuse_lora()
-            pipe.unload_lora_weights()
-        is_compatible = sdxl_loras[selected_state.index]["is_compatible"]
-        
-        if is_compatible:
-            pipe.load_lora_weights(loaded_state_dict)
-            pipe.fuse_lora(lora_scale)
-            last_fused = True
-        else:
-            is_pivotal = sdxl_loras[selected_state.index]["is_pivotal"]
-            if(is_pivotal):
-                pipe.load_lora_weights(loaded_state_dict)
-                pipe.fuse_lora(lora_scale)
-                last_fused = True
-                
-                #Add the textual inversion embeddings from pivotal tuning models
-                text_embedding_name = sdxl_loras[selected_state.index]["text_embedding_weights"]
-                text_encoders = [pipe.text_encoder, pipe.text_encoder_2]
-                tokenizers = [pipe.tokenizer, pipe.tokenizer_2]
-                embedding_path = hf_hub_download(repo_id=repo_name, filename=text_embedding_name, repo_type="model")
-                embhandler = TokenEmbeddingsHandler(text_encoders, tokenizers)
-                embhandler.load_embeddings(embedding_path)
-                
-            else:
-                merge_incompatible_lora(full_path_lora, lora_scale)
-                last_fused=False
-            last_merged = True
+        pipe.load_lora_weights(loaded_state_dict)
+        pipe.fuse_lora()
+        last_fused = True
+        is_pivotal = sdxl_loras[selected_state.index]["is_pivotal"]
+        if(is_pivotal):
+            #Add the textual inversion embeddings from pivotal tuning models
+            text_embedding_name = sdxl_loras[selected_state.index]["text_embedding_weights"]
+            text_encoders = [pipe.text_encoder, pipe.text_encoder_2]
+            tokenizers = [pipe.tokenizer, pipe.tokenizer_2]
+            embedding_path = hf_hub_download(repo_id=repo_name, filename=text_embedding_name, repo_type="model")
+            embhandler = TokenEmbeddingsHandler(text_encoders, tokenizers)
+            embhandler.load_embeddings(embedding_path)
             
     image = pipe(
         prompt=prompt,
