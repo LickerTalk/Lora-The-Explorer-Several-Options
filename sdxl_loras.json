@@ -876,7 +876,7 @@
         "weights": "AmiguramiRedmond-Crochet-Amigurumi.safetensors",
         "is_compatible": true,
         "likes": 7,
-        "downloads": 609,
+        "downloads": 609
     },
     {
         "image": "https://huggingface.co/Changchoichang2104/StableDiffusionXL-Waltz-with-Bashir-style/resolve/main/images/a22ec06b-031c-454e-8fac-6a2f7dacddff.jpeg",
@@ -966,7 +966,7 @@
         "weights": "caricature_sdxl_v2.safetensors",
         "is_compatible": true,
         "likes": 5,
-        "downloads": 227,
+        "downloads": 227
         "new": true
     },
     {
@@ -1017,7 +1017,7 @@
         "weights": "LaundryArt_LoRA-r32.safetensors",
         "is_compatible": true,
         "likes": 2,
-        "downloads": 82,
+        "downloads": 82
         "new": true
     },
     {
@@ -1068,7 +1068,7 @@
       "weights": "pixelportraits192-v1-2151.safetensors",
       "is_compatible": true,
       "likes": 2,
-      "downloads": 75,
+      "downloads": 75
       "new": true
     },
     {
