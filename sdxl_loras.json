@@ -748,7 +748,7 @@
         "weights": "Aether_Bubbles_And_Foam_v1_SDXL_LoRA.safetensors",
         "trigger_word": "made of bath foam and soap bubbles",
         "is_compatible": true,
-        "likes": 2,
+        "likes": 2
     },
     {
         "image": "https://huggingface.co/artificialguybr/3DRedmond-V1/resolve/main/images/00064-2498532539.png",
@@ -757,7 +757,7 @@
         "weights": "3DRedmond-3DRenderStyle-3DRenderAF.safetensors",
         "trigger_word": "3D Render Style, 3DRenderAF",
         "is_compatible": true,
-        "likes": 5,
+        "likes": 5
     },
     {
         "image": "https://i.imgur.com/cAx2FL1.jpg",
@@ -766,7 +766,7 @@
         "weights": "Tape_people.safetensors",
         "trigger_word": "covered of tape, caution tape, keep out",
         "is_compatible": true,
-        "likes": 2,
+        "likes": 2
     },
     {
         "image": "https://huggingface.co/WizWhite/the-wizard-s-vintage-romance-novel/resolve/main/5033837.jpeg",
@@ -998,16 +998,6 @@
         "is_compatible": true,
         "likes": 3,
         "downloads": 128
-    },
-    {
-        "image": "https://huggingface.co/Norod78/SDXL-LaundryArt-LoRA-r16/resolve/main/5594409.jpeg",
-        "title": "Norod78/SDXL-LaundryArt-LoRA-r16",
-        "repo": "Norod78/SDXL-LaundryArt-LoRA-r16",
-        "trigger_word": "LaundryArt",
-        "weights": "LaundryArt_LoRA_r16-000006.safetensors",
-        "is_compatible": true,
-        "likes": 2,
-        "downloads": 82
     },
     {
         "image": "https://huggingface.co/Norod78/SDXL-DollZ-Style-LoRA/resolve/main/images/00045-20240122220020-7827-Pikachu%20DollZ%20style%20_lora_DollZ_style_0.8_.jpg",
