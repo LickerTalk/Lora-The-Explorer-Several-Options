@@ -24,15 +24,18 @@ share_js = """async () => {
 	}
 	
     async function getInputImgFile(imgEl){
+        console.log(imgEl)
         const res = await fetch(imgEl.src);
+        console.log(res)
         const blob = await res.blob();
+        console.log(blob.type)
         const imgId = Date.now() % 200;
-        const isPng = imgEl.src.startsWith(`data:image/png`);
+        const isPng = blob.type == 'image/png';
         if(isPng){
-            const fileName = `sd-perception-${{imgId}}.png`;
+            const fileName = `sd-perception-${imgId}.png`;
             return new File([blob], fileName, { type: 'image/png' });
         }else{
-            const fileName = `sd-perception-${{imgId}}.jpg`;
+            const fileName = `sd-perception-${imgId}.jpg`;
             return new File([blob], fileName, { type: 'image/jpeg' });
         }
 	}
