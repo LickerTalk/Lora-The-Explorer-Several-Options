@@ -230,7 +230,7 @@ with gr.Blocks(css="custom.css") as demo:
     gr_sdxl_loras = gr.State(value=sdxl_loras_raw)
     gr_sdxl_loras_new = gr.State(value=sdxl_loras_raw_new)
     title = gr.HTML(
-        """<h1><img src="https://i.imgur.com/vT48NAO.png" alt="LoRA"> LoRA the Explorer</h1>""",
+        """<h1><img src="https://i.imgur.com/vT48NAO.png" alt="LoRA"> LoRA the Explorer</h1><p><a href="https://huggingface.co/spaces/multimodalart/flux-lora-the-explorer">Try the Flux LoRAs here</a></p>""",
         elem_id="title",
     )
     selected_state = gr.State()
